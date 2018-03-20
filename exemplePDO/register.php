@@ -13,8 +13,6 @@ if(isset($_POST['testEnvoi'])){
 			catch (PDOException $e){
 				die('Erreur : ' .$e->getMessage());
 			}
-			
-
 		}
 	}
 
