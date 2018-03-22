@@ -1,16 +1,16 @@
 body {
-	background-color : #363638;
+	background-color : #006666;
 }
 form {
 	margin : 25px 0 0 25px;
 }
 form fieldset {
-	border : 1px solid #8a916f;
+	border : 1px solid #ffcc66;
 	border-radius : 10px 0 10px 10px;
 	width : 450px;
 }
 form fieldset legend {
-	color : white;
+	color : #ff9999;
 	margin-left : 50px;
 	padding : 0 10px;
 	font-size : 120%;
@@ -22,20 +22,20 @@ form fieldset #champ p label {
 	display : inline-block;
 	margin : 10px 10px 0 10px;
 	width : 180px;
-	color : white;
+	color : #ff9999;
 }
 form fieldset #champ p input {
 	width : 200px;
 	border-radius : 5px 0 5px 5px;
 }
 form fieldset #champ p input:focus {
-	background : #ffff99;
+	background : #ffcc66;
 	border-radius : 5px 5px 5px 0;
 }
 form fieldset #champ p .bouton {
 	width : 100px;
 	background : black;
-	color : grey;
+	color : #ff9999;
 }
 form fieldset #champ p .bouton:hover {
 	color : white;
@@ -44,4 +44,14 @@ form fieldset #champ #mouton {
 	margin-left : 200px;
 	margin-top : 10px;
 	margin-bottom : 10px;
+}
+h1 {
+	margin : 30px 0 0 30px;
+	font-size : 200%;
+	color : yellow;
+}
+#message {
+	margin : 20px 0 0 20px;
+	color : white;
+	font-size : 150%;
 }

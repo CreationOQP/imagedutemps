@@ -1,11 +1,14 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
 	<title>Inscription Noël</title>
-	<link rel="stylesheet" type="text/css" href="ae_reset.css" />
-	<link rel="stylesheet" type="text/css" href="af_style.css" />
-	<script src="ag_scriptjs.js"></script>
+	<link rel="stylesheet" type="text/css" href="reset.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="scriptjs.js"></script>
 </head>
 <body onload="chargementFormulaire()">
 	<form action="register.php" method="post">
@@ -13,11 +16,11 @@
 		<legend>Formulaire d'inscription</legend>
 			<div id="champ">
 				<p>
-					<label for="nom">Nom :</label>
-					<input type="text" name="nom" id="nom" required placeholder="Votre nom" title="ATTENTION, en cas d'usurpation de nom, une alerte CIA sera enregistrée !" autofocus />
+					<label for="nom" id="label_nom">Nom :</label>
+					<input type="text" name="nom" id="nom" required placeholder="Votre nom" title="ATTENTION, en cas d'usurpation de nom, une alerte CIA sera dilignetée !" autofocus />
 				</p>
 				<p>
-					<label for="prenom">Prénom :</label>
+					<label for="prenom" id="label_prenom" >Prénom :</label>
 					<input type="text" name="prenom" id="prenom" required placeholder="Votre prénom" />
 				</p>
 				<p>
@@ -34,7 +37,7 @@
 				</p>
 				<p>
 					<label for="password">Mot de passe :</label>
-					<input type="password" name="password" id="password" required placeholder="Mot de passe" />
+					<input type="password" name="password" id="password" required placeholder="Mot de passe" onBlur="caractere()" />
 				</p>
 				<p>
 					<label for="password_bis">Vérification mot de passe :</label>
@@ -47,5 +50,6 @@
 			</div>
 		</fieldset>
 	</form>
+	<p id="message"><?php echo $_SESSION['message'];?></p>
 </body>
 </html>

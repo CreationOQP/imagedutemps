@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Inscription Noël</title>
+	<link rel="stylesheet" type="text/css" href="reset.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="scriptjs.js"></script>
+</head>
+<body onload="chargementFormulaire()">
+	<form action="register.php" method="post">
+		<fieldset>
+		<legend>Formulaire d'inscription</legend>
+			<div id="champ">
+				<p>
+					<label for="nom" id="label_nom">Nom :</label>
+					<input type="text" name="nom" id="nom" required placeholder="Votre nom" title="ATTENTION, en cas d'usurpation de nom, une alerte CIA sera diligentée !" autofocus />
+				</p>
+				<p>
+					<label for="prenom" id="label_prenom" >Prénom :</label>
+					<input type="text" name="prenom" id="prenom" required placeholder="Votre prénom" />
+				</p>
+				<p>
+					<label for="fonction">Fonction :</label>
+					<input type="text" name="fonction" id="fonction" required placeholder="Votre fonction" />
+				</p>
+				<p>
+					<label for="email">Email :</label>
+					<input type="email" name="email" id="email" required placeholder="Adresse email" />
+				</p>
+				<p>
+					<label for="date_naissance">Date de naissance :</label>
+					<input type="date" name="date_naissance" id="date_naissance" required placeholder="jj/mm/aaaa" />
+				</p>
+				<p>
+					<label for="password">Mot de passe :</label>
+					<input type="password" name="password" id="password" required placeholder="Mot de passe" onBlur="caractere()" />
+				</p>
+				<p>
+					<label for="password_bis">Vérification mot de passe :</label>
+					<input type="password" name="password_bis" id="password_bis" required placeholder="Répéter le mot de passe" onBlur="verificationPassword()" />
+				</p>
+				<p id="mouton">
+					<input type="submit" value="Envoyer" name="test_envoi" id="bouton_envoi" class="bouton"/>
+					<input type="reset" Value="Effacer" class="bouton" title="Effacez les champs remplis" />
+				</p>
+			</div>
+		</fieldset>
+	</form>
+</body>
+</html>
