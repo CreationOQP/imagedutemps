@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,7 +17,7 @@
 			<div id="champ">
 				<p>
 					<label for="nom" id="label_nom">Nom :</label>
-					<input type="text" name="nom" id="nom" required placeholder="Votre nom" title="ATTENTION, en cas d'usurpation de nom, une alerte CIA sera diligentée !" autofocus />
+					<input type="text" name="nom" id="nom" required placeholder="Votre nom" title="ATTENTION, en cas d'usurpation de nom, une alerte CIA sera dilignetée !" autofocus />
 				</p>
 				<p>
 					<label for="prenom" id="label_prenom" >Prénom :</label>
@@ -47,5 +50,6 @@
 			</div>
 		</fieldset>
 	</form>
+	<p id="message"><?php echo $_SESSION['message'];?></p>
 </body>
 </html>
