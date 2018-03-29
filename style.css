@@ -1,0 +1,40 @@
+body {
+	background : linear-gradient(#1a0000, #4d0000)		/* Fond dégradé du bas gauche vers le haut droite */
+}
+/*menu */
+	nav {
+		float : left;				/* pour situé des éléments sur la gauche */
+		margin : 20px 0 0 10px;		/* Marge externe haut et gauche */
+	}
+	nav ul {
+		display : none;				/* Efface la liste des pays */
+		opacity : 0.5;
+	}
+	nav:hover ul {
+		display : block;			/* Affiche au survol la liste des pays */
+	}
+	nav ul li #fr:hover {
+		opacity : 1;
+	}
+
+/* Section header */
+	section header #titre {
+		display : block;			/* Permet de mettre en bloc l´image oour la centrer par la suite */
+		width : 100%;				/* Prend toute la largeur pour les petits écrans */
+		max-width : 916px;			/* Largeur maxi */
+		height : auto;				/* Garde la proportion largeur hauteur lors du rétricessement */
+		margin : auto;
+		margin-top : 10px;
+	}
+	section header #legende {
+		width : 100%;				/* Prend toute la largeur pour les petits écrans */
+		max-width : 385px;			/* Largeur maxi */
+		height : auto;
+		margin : -20px 0 0 40%;
+	}
+	
+/* Section aside */
+	section aside {
+		position : relative;		/* Position relative pour mettre une position absolute sur l´enfant */
+		margin 
+	}
