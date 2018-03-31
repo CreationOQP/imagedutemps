@@ -1,40 +1,78 @@
 body {
-	background : linear-gradient(#1a0000, #4d0000)		/* Fond dégradé du bas gauche vers le haut droite */
+	background : linear-gradient(#1a0000, #4d0000);	/* Fond dégradé du bas gauche vers le haut droite */
+	width : 100%;
+	height : 100%;
+	margin : 0;
+	padding : 0;
 }
 /*menu */
 	nav {
 		float : left;				/* pour situé des éléments sur la gauche */
 		margin : 20px 0 0 10px;		/* Marge externe haut et gauche */
+		height : 100%;
 	}
 	nav ul {
 		display : none;				/* Efface la liste des pays */
-		opacity : 0.5;
+		
 	}
 	nav:hover ul {
 		display : block;			/* Affiche au survol la liste des pays */
+		opacity : 0.5;
 	}
 	nav ul li #fr:hover {
 		opacity : 1;
 	}
+	nav ul li #uk:hover {
+		opacity : 1;
+	}
+
+/* Section */
+	section {
+		float : left;
+		width : calc(100% - 52px);	/* calc() permet de rtrancher l´espace menu + marge des 100 % de l´écran, attention à la syntaxe */
+		margin : auto;
+		position : relative;
+		top : 10px;
+		left : 10px;
+	}
 
 /* Section header */
 	section header #titre {
-		display : block;			/* Permet de mettre en bloc l´image oour la centrer par la suite */
+		float : left;				/* Pour situer la légende sur la gauche */
 		width : 100%;				/* Prend toute la largeur pour les petits écrans */
-		max-width : 916px;			/* Largeur maxi */
+		max-width : 30%;			/* Largeur maxi */
 		height : auto;				/* Garde la proportion largeur hauteur lors du rétricessement */
-		margin : auto;
 		margin-top : 10px;
+		margin-left : 2%;
+		border : 0px green solid;
 	}
 	section header #legende {
 		width : 100%;				/* Prend toute la largeur pour les petits écrans */
-		max-width : 385px;			/* Largeur maxi */
+		max-width : 30%;			/* Largeur maxi */
 		height : auto;
-		margin : -20px 0 0 40%;
+		border : 0px green solid;
+		margin-top : 50px;
+		margin-left : 30px;
 	}
 	
 /* Section aside */
-	section aside {
-		position : relative;		/* Position relative pour mettre une position absolute sur l´enfant */
-		margin 
+		
+	section aside #a1900 {
+		position : absolute;
+		top : 80px;
+		left : 20px;
+		width : 80%;
+		max-width : 851px;
+		height : auto;
+		z-index : 6;
 	}
+	section aside #a2000 {
+		position : absolute;
+		top : 100px;
+		left : 40px;
+		width : 80%;
+		max-width : 851px;
+		height : auto;
+		z-index : 5;
+	}
+	
