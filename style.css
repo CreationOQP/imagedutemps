@@ -1,78 +1,123 @@
-body {
-	background : linear-gradient(#1a0000, #4d0000);	/* Fond dégradé du bas gauche vers le haut droite */
+﻿* {
+	box-sizing: border-box;
+}
+html {
 	width : 100%;
 	height : 100%;
-	margin : 0;
-	padding : 0;
 }
-/*menu */
-	nav {
-		float : left;				/* pour situé des éléments sur la gauche */
-		margin : 20px 0 0 10px;		/* Marge externe haut et gauche */
-		height : 100%;
-	}
-	nav ul {
-		display : none;				/* Efface la liste des pays */
-		
-	}
-	nav:hover ul {
-		display : block;			/* Affiche au survol la liste des pays */
-		opacity : 0.5;
-	}
-	nav ul li #fr:hover {
-		opacity : 1;
-	}
-	nav ul li #uk:hover {
-		opacity : 1;
-	}
 
-/* Section */
-	section {
-		float : left;
-		width : calc(100% - 52px);	/* calc() permet de rtrancher l´espace menu + marge des 100 % de l´écran, attention à la syntaxe */
-		margin : auto;
-		position : relative;
-		top : 10px;
-		left : 10px;
-	}
+body {
+	/* background : linear-gradient(#1a0000, #4d0000); */
+	background : #363638;
+}
 
-/* Section header */
-	section header #titre {
-		float : left;				/* Pour situer la légende sur la gauche */
-		width : 100%;				/* Prend toute la largeur pour les petits écrans */
-		max-width : 30%;			/* Largeur maxi */
-		height : auto;				/* Garde la proportion largeur hauteur lors du rétricessement */
-		margin-top : 10px;
-		margin-left : 2%;
-		border : 0px green solid;
+nav {
+	float : left;
+	margin : 20px 0 0 10px;
+}
+nav ul {
+	opacity :0.1;
+	transition : all 0.5s ease-in-out;
+	margin-top : 5px;
+}
+nav:hover ul {
+	opacity : 1;
+}
+nav ul li:hover {				/* Transition sur chaque pays */
+	transform : scale(1.3);
+	transition : transform 0.3s ease-in;
+}
+
+section {
+	margin : 10px 0 0 50px;
+}
+section  header img {
+	display : block;
+	margin : 0 auto;
+	width : 100%;
+	max-width : 500px;
+	height : auto;
+	margin-left: 30%;
+}
+section figure {
+	background-image : url("image/debardeur_homologue.png");
+	background-repeat : no-repeat;
+	background-size : 100%;
+	background-origin : border-box;
+	background-position : center;
+	/* width: 100vw; */
+	max-width : 900px;
+	height: auto;
+}
+section figure img {
+	display : block;
+	margin : 0 auto;
+	width : 100%;
+	max-width : 900px;
+	height : auto;
+	opacity : 1;
+	transition : all 0.5s ease-in-out;
+}
+section figure img:hover {
+	opacity : 0;
+}
+section footer img {
+	width : 100%;
+	max-width : 385px;
+	height : auto;
+	margin : 20px 0 0 50%;
+}
+
+/* Fenêtre Modal */
+	#modalAccueilFr {
+		position: fixed;	/* Position de la fenêtre modal */
+		z-index: 99999;		/* fenêtre modal au-dessus de toutes les autres */
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0, 0, 0, 0.8);	/* couleur de fond de la fenêtre modal */
+		opacity:0;						/* La fenêtre modal est transparente */
+		transition: all 500ms ease-in;	/* Transition sur l'apparitions de la fenêtre */
+		pointer-events: none;			/* Pointer rendu inefficace */
 	}
-	section header #legende {
-		width : 100%;				/* Prend toute la largeur pour les petits écrans */
-		max-width : 30%;			/* Largeur maxi */
-		height : auto;
-		border : 0px green solid;
-		margin-top : 50px;
-		margin-left : 30px;
+	/* Animations sur le menu */
+		#modalAccueilFr #modalAccueilMenu {
+			max-width : 500px;		/* Largeur maxi du cadre de menu */
+			position : relative;	/* en :target la position sera autre */
+			margin : 35% 10%;
+			padding : 8px;
+			border-radius : 10px 0 10px 10px;
+			background : #363638;
+		}
+		#modalAccueilFr #modalAccueilMenu h1 {
+			text-align : center;
+		}
+		#modalAccueilFr #modalAccueilMenu h1 a {
+			color : #b09e56;
+			font-style : bold;
+			font-size : 150%;
+		}
+		#modalAccueilFr #modalAccueilMenu ul {
+			margin : 10% 20%;
+		}
+		#modalAccueilFr #modalAccueilMenu ul li {
+			margin-top : 15px;
+		}
+		#modalAccueilFr #modalAccueilMenu ul li a {
+			color : #b09e56;
+		}
+		#modalAccueilFr #modalAccueilMenu ul #modalFermer {
+			text-align : right;
+			opacity : 0.5;
+		}
+/* target de la fenêtre modal */
+	#modalAccueilFr:target {
+		opacity : 1;			/* La fenêtre modal est apparente */
+		pointer-events : auto;	/* Le pointeur est actif */
 	}
-	
-/* Section aside */
-		
-	section aside #a1900 {
-		position : absolute;
-		top : 80px;
-		left : 20px;
-		width : 80%;
-		max-width : 851px;
-		height : auto;
-		z-index : 6;
-	}
-	section aside #a2000 {
-		position : absolute;
-		top : 100px;
-		left : 40px;
-		width : 80%;
-		max-width : 851px;
-		height : auto;
-		z-index : 5;
-	}
-	
+	/* target sur le menu du modal */
+		#modalAccueilFr:target #modalAccueilMenu {
+			margin : 10% 35%;
+			transition : all 0.8s ease-in-out;
+		}

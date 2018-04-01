@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
 	<title>L'image du temps</title>
@@ -7,27 +7,39 @@
 	<script type="text/javascript" src="scriptJS.js"></script>
 </head>
 <body>
-	<section>
-		<nav>
-			<img src="image/menuEnthousiasme.png" alt="menu" class="menu" />
+	<div id="modalAccueilFr"> <!-- Cadre de la fenêtre modal -->
+		<div id="modalAccueilMenu"> <!-- Cadre de la fenêtre modal pour le menu pour faire une animation sur le menu -->
+			<h1><a href="index.html">Image du temps - Bienvenue</a></h1>
 			<ul>
-				<li><img src="image/flagFR.png" alt="France" id="fr" class="menu" /></li>
-				<li><img src="image/flagUK.png" alt="France" id="uk" class="menu" /></li>
+				<li><a href="">Liste déroulante ville</a></li>
+				<li><a href="">Contacts</a></li>
+				<li><img src="image/logo.png" alt="France" id="logo" title="A propos"class="menu" /></li>
 			</ul>
-		</nav>
+			<ul><li id="modalFermer"><a href="#fermer"  title="Retour accueil" >Fermer fenêtre</a></li></ul>
+		</div>
+	</div>
+	<nav>
+		<img src="image/menuEnthousiasmeBlack.png" alt="menu" class="menu" />
+		<ul>
+			<li><a href="#modalAccueilFr"><img src="image/flagFR.png" alt="France" id="fr" class="menu" /></a></li>
+			<li><img src="image/flagUK.png" alt="France" id="uk" class="menu" /></li>
+		</ul>
+	</nav>
+	
+	<section>
+		<header>
+			<img src="image/titre.png" alt="titre" id="titre" />
+		</header>
 		
-			<header>
-				<img src="image/titre.png" alt="titre" id="titre" />
-				<img src="image/legende.png" alt="légende" id="legende" />
-			</header>
-			<aside>
-				<figure id="a1900">
-					<img src="image/debardeur.png" alt="Débardeur en 1950" id="a1900" class="photo" />
-					<figcaption>1950</figcaption>
-					<img src="image/debardeur_homologue.png" alt="Débardeur en 2018" id="a2000" class="photo" />
-					<figcaption>2018</figcaption>
-				</figure>
-			</aside>
-		</section>
+		<figure>
+			<img src="image/debardeur.png" alt="Débardeur en 1950" id="a1900" class="photo" />
+		</figure>
+		
+		<footer>
+			<img src="image/legende.png" alt="titre" id="légende" />
+		</footer>
+	</section>
+	
+	
 </body>
 </html>
