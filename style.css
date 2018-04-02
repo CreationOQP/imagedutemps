@@ -13,12 +13,17 @@ body {
 
 nav {
 	float : left;
+	background-image : url("image/menuEnthousiasmeBlack.png");
+	background-repeat : no-repeat;
 	margin : 20px 0 0 10px;
+}
+nav:hover {
+	background-image : url("image/menuHumiliteBlack.png");
 }
 nav ul {
 	opacity :0.1;
 	transition : all 0.5s ease-in-out;
-	margin-top : 5px;
+	margin-top : 40px;
 }
 nav:hover ul {
 	opacity : 1;
@@ -59,6 +64,22 @@ section figure img {
 	transition : all 0.5s ease-in-out;
 }
 section figure img:hover {
+	opacity : 0;
+}
+section figure figcaption {
+	position : relative;
+	top : -60px;
+	left : 40px;
+	opacity : 0.8;
+	width : 100%;
+	max-width : 100px;
+	height : auto;
+	background : #363638;
+	border-radius : 20px 20px 0 0;
+	padding : 15px;
+	color : #b09e56;
+}
+section figure img:hover figcaption {
 	opacity : 0;
 }
 section footer img {

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>L'image du temps</title>
+	<meta name="description" content="Formulaire de contact pour correspondre avec l'administrateur du site imagedutemps.org" />
+	<meta name="keywords" content="contact, correspondance" />
+	<link rel="stylesheet" type="text/css" href="reset.css" />
+	<link rel="stylesheet" type="text/css" href="styleContact.css" /> 
+	<script type="text/javascript" src="scriptJS.js"></script>
+</head>
+
+<body>
+	<header>
+		<a href="index.html" title="Liens vers la page d'accueil"><img src="image/titre.png" alt="titre" id="titre" /></a>
+	</header>
+	
+	<section>
+		<h1><a href="index.html" title="Liens vers la page d'accueil">imagedutemps.org</a> - Bienvenue</h1>
+		<p>Je vous remercie de l'intéret que vous portez au projet "image du temps",<br />
+		ainsi que d'être bref et concis dans votre demande.</p>
+		<p>N'utilisez pas le formulaire pour donner un avis sur le site, les étoiles sont là pour ça.</p>
+		<form method="post" action="contactPost.php">
+			<fieldset>
+				<legend>Correspondance</legend>
+					<div id="champ">
+						<p>
+							<label for="prenom" id="label_prenom" >Prénom<span class="asterix">*</span></label>
+							<input type="text" name="prenom" id="prenom" required autofocus placeholder="Votre prénom" />
+						</p>
+						<p>
+							<label for="nom" id="label_nom">Nom<span class="asterix">*</span></label>
+							<input type="text" name="nom" id="nom" required placeholder="Votre nom" />
+						</p>
+						<p>
+							<label for="association">Association</label>
+							<input type="text" name="association" id="association" placeholder="Association" title="Seulement si vous écrivez au titre d'une association" />
+						</p>
+						<p>
+							<label for="email">Email<span class="asterix">*</span></label>
+							<input type="email" name="email" id="email" required placeholder="Adresse email" />
+						</p>
+						<p>
+							<label for="texte">Votre demande</label><span class="asterix">*</span></label><br />
+							<textarea name="texte" rows="10" cols="50" >Votre texte, pas un roman</textarea>
+						</p>
+						
+						<p id="mouton">
+							<input type="submit" value="Envoyer" name="test_envoi" id="bouton_envoi" class="bouton"/>
+							<input type="reset" Value="Effacer" class="bouton" title="Effacez les champs remplis" />
+						</p>
+						<p class="note"><span class="asterix">*</span> champs obligatoire</p>
+			</div>
+			</fieldset>
+		</form>
+	</section>
+	
+	<footer>
+		<p>&copy; 2018-20020 Noël Marais - Tous droits déposés.</p>
+	</footer>
+</body>
+</html>
