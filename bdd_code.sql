@@ -249,3 +249,55 @@ USE imagedutemps;
 		sce_rang CHAR(2),
 		PRIMARY KEY (sce_dia_id, sce_homologue_id))
 		ENGINE=INNODB;
+
+-- Création de la table connexion, préfixe con --
+	CREATE TABLE Connexion (
+		con_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+		con_date DATETIME,
+		con_dure TIME,
+		PRIMARY KEY (con_id))
+		ENGINE=INNODB;
+		
+-- Création de la table forumBillets préfixe forb --
+	CREATE TABLE ForumBillet (
+		forb_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+		forb_titre VARCHAR(250),
+		forb_contenu TEXT,
+		forb_date DATETIME,
+		forb_commentaire TEXT,
+		forb_publication BOOLEAN,
+		forb_pub_id INT UNSIGNED NOT NULL,
+		forb_the_id INT UNSIGNED NOT NULL,
+		forb_lie_id INT UNSIGNED NOT NULL,
+		PRIMARY KEY (forb_id),
+		CONSTRAINT fk_forb_pub FOREIGN KEY (forb_pub_id) REFERENCES Publics(pub_id),
+		CONSTRAINT fk_forb_the FOREIGN KEY (forb_the_id) REFERENCES Theme(the_id),
+		CONSTRAINT fk_forb_lie FOREIGN KEY (forb_lie_id) REFERENCES Lieu(lie_id))
+		ENGINE=INNODB;
+		
+-- Création de la table forumDiscussion préfixe frod --
+	CREATE TABLE ForumDiscussion (
+		ford_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+		ford_discussion TEXT,
+		ford_date DATETIME,
+		ford_commentaire TEXT,
+		ford_publication BOOLEAN,
+		ford_pub_id INT UNSIGNED NOT NULL,
+		ford_forb_id INT UNSIGNED NOT NULL,
+		PRIMARY KEY (ford_id),
+		CONSTRAINT fk_ford_pub FOREIGN KEY (ford_pub_id) REFERENCES Publics(pub_id),
+		CONSTRAINT fk_ford_forb FOREIGN KEY (ford_forb_id) REFERENCES ForumBillet(forb_id))
+		ENGINE=INNODB;
+
+-- Création de la table messageContact préfixe mco --
+	CREATE TABLE MessageContact (
+		mco_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+		mco_prenom VARCHAR(30),
+		mco_nom VARCHAR(30),
+		mco_association VARCHAR(75),
+		mco_email VARCHAR(250),
+		mco_demande TEXT,
+		mco_date DATETIME,
+		mco_commentaire TEXT,
+		PRIMARY KEY (mco_id))
+		ENGINE=INNODB;
