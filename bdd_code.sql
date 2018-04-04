@@ -301,3 +301,16 @@ USE imagedutemps;
 		mco_commentaire TEXT,
 		PRIMARY KEY (mco_id))
 		ENGINE=INNODB;
+		
+-- Création de la table étoile, préfixe eto --
+	CREATE TABLE Etoile (
+		eto_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+		eto_1 INT,
+		eto_2 INT,
+		et0_3 INT,
+		eto_4 INT,
+		eto_5 INT,
+		eto_ip VARCHAR(12),
+		eto_commentaires TEXT,
+		PRIMARY KEY(eto_id))
+		ENGINE=INNODB;
