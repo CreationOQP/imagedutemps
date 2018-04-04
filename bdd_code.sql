@@ -296,7 +296,7 @@ USE imagedutemps;
 		mco_nom VARCHAR(30),
 		mco_association VARCHAR(75),
 		mco_email VARCHAR(250),
-		mco_demande TEXT,
+		mco_sujet TEXT,
 		mco_date DATETIME,
 		mco_commentaire TEXT,
 		PRIMARY KEY (mco_id))
