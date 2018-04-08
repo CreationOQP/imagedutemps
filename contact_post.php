@@ -20,7 +20,7 @@ include("include_connexion.php");
 // Lancement de l'exception
 try {
 		// Enregistrement dans la BDD
-			$requete = $bdd->prepare('INSERT INTO messageContact (mco_prenom, mco_nom, mco_association, mco_email, mco_sujet, mco_date) VALUES (:prenom, :nom, :association, :email, :sujet, :dateMessage)');
+			$requete = $bdd->prepare('INSERT INTO MessageContact (mco_prenom, mco_nom, mco_association, mco_email, mco_sujet, mco_date) VALUES (:prenom, :nom, :association, :email, :sujet, :dateMessage)');
 } catch (Exception $e) { die('Préparation de la requète : '.$e->getMessage() );}
 		// On exécute la requète en identifiant les marqueurs
 			$requete->execute(array(
@@ -36,10 +36,10 @@ try {
 
 // envoi d'email pour me prévenir
 $sujet = "Message du site imagedutemps.org";
-$message = 'Message du : '.$dateMessage\r\n.
-			'de : '.$prenom.' '.$nom\r\n.
-			'association : '.$association\r\n.
-			'texte : '.$texte\r\n.
+$message = 'Message du : '.$dateMessage.
+			'de : '.$prenom.' '.$nom.
+			'association : '.$association.
+			'texte : '.$texte.
 			'Email de réponse : '.$email;
 $destinataire = "creationoqp@yahoo.fr";
 $headers = "content-type: text/plain; charset=\"iso-8859-1\"";

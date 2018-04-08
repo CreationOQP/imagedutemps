@@ -238,7 +238,7 @@
 													('utilisateur mail 20', 2, 20);
 
 -- Insertion des données dans la table époque --
-	INSERT INTO epoque (epo_annee, epo_description, epo_commentaire)
+	INSERT INTO Epoque (epo_annee, epo_description, epo_commentaire)
 				VALUES (1900, 'description époque 1900', 'Commentaire époque 1900'),
 						(2000, 'description époque 2000', 'Commentaire époque 2000'),
 						(2100, 'description époque 2100', 'Commentaire époque 2100');

@@ -16,12 +16,12 @@ DROP TABLE Publics;
 DROP TABLE Etat_civil;
 DROP TABLE Telephone;
 DROP TABLE Type_telephone; */
-drop database imagedutemps;
+/* drop database imagedutemps; */
 --  ------------------------------------
 --  Création de la base de donnée test
 --  ------------------------------------
-CREATE DATABASE imagedutemps CHARACTER SET 'utf8';
-USE imagedutemps;
+/* CREATE DATABASE imagedutemps CHARACTER SET 'utf8';
+USE imagedutemps; */
 
 -- Création des tables, chaque nom des champs est précédé du préfixe de la table qui se compose des trois premières lettres du nom de la table --
 
@@ -150,7 +150,7 @@ USE imagedutemps;
 		vil_pay_code CHAR(3) NOT NULL,
 		PRIMARY KEY (vil_id),
 		CONSTRAINT fk_vil_cp FOREIGN KEY (vil_cp_id) REFERENCES Code_postal(cp_id),
-		CONSTRAINT fk_vil_pay FOREIGN KEY (vil_pay_code) REFERENCES PAYS(pay_code))
+		CONSTRAINT fk_vil_pay FOREIGN KEY (vil_pay_code) REFERENCES Pays(pay_code))
 		ENGINE=INNODB;
 		
 -- Création de la table adresse, préfixe adr --
@@ -169,7 +169,7 @@ USE imagedutemps;
 		ENGINE=INNODB;
 
 -- création de la table dns_mail, préfixe dns --
-	CREATE TABLE dns_mail (
+	CREATE TABLE Dns_mail (
 		dns_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 		dns_nom VARCHAR(20),
 		PRIMARY KEY (dns_id))
@@ -182,7 +182,7 @@ USE imagedutemps;
 		utm_dns_id INT UNSIGNED NOT NULL,
 		utm_pub_id INT UNSIGNED NOT NULL,
 		PRIMARY KEY (utm_id),
-		CONSTRAINT fk_utm_id FOREIGN KEY (utm_dns_id) REFERENCES dns_mail(dns_id),
+		CONSTRAINT fk_utm_id FOREIGN KEY (utm_dns_id) REFERENCES Dns_mail(dns_id),
 		CONSTRAINT fk_utm_pub FOREIGN KEY (utm_pub_id) REFERENCES Publics(pub_id))
 		ENGINE=INNODB;
 
