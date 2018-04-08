@@ -1,0 +1,9 @@
+section {
+	background-image : url("image/debardeur_homologue.png");
+	background-repeat : no-repeat;
+	background-size : 100%;
+	background-position : center;
+	width: 100vw;
+	max-width : 900px;
+	height: auto;
+}
