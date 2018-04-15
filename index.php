@@ -1,9 +1,7 @@
 ﻿<?php
 	$affichage = "visibility";
-	if (isset($_COOKIE["accpetation"])) {
-		$affichage = "none"
-	} else {
-		$affichage ="visibility";
+	if (isset($_COOKIE["acceptation"])) {
+		$affichage = "none";
 	}
 ?>
 <!DOCTYPE html>
@@ -17,9 +15,11 @@
 	<script type="text/javascript" src="script/scriptJS.js"></script>
 </head>
 <body>
-	<div id="cookie">
-		<p style="display : <?php $affichage?>;">En poursuivant votre visite vous acceptez les règles d'utilisation du site "imagedutemps.org", principalement la non copie des documents présentés, ainsi que l'usage des cookies pour mémoire.<input type="button" value="J'ACCEPTE" /></p>
-	</div>
+	<form id="cookie" method="post" action="postCreationCookie.php" style="display: <?php echo $affichage;?>;">
+		<p >En poursuivant votre visite vous acceptez les règles d'utilisation du site "imagedutemps.org", principalement la non copie des documents présentés, ainsi que l'usage des cookies pour mémoire.
+		<input type="submit" name="acceptation" value="J'ACCEPTE" />
+		<input type="hidden" name="accepte" value="acceptation" /></p>
+	</form>
 	<div id="modalAccueilFr"> <!-- Cadre de la fenêtre modal -->
 		<div id="modalAccueilMenu"> <!-- Cadre de la fenêtre modal pour le menu pour faire une animation sur le menu -->
 			<h1><a href="index.html">Image du temps - Bienvenue</a></h1>
