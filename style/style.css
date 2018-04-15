@@ -52,6 +52,9 @@ section figure {
 section figure img {
 	display : block;
 	margin : auto auto;
+	width : 100%;
+	height : auto;
+	max-width : 900px;
 	opacity : 1;
 	transition : all 0.5s ease-in-out;
 }
@@ -62,7 +65,7 @@ section figure img:hover {
 section figure figcaption {
 	position : relative;
 	top : -60px;
-	left : 40px;
+	left : 50%;
 	opacity : 0.8;
 	width : 100%;
 	max-width : 100px;
@@ -72,9 +75,7 @@ section figure figcaption {
 	padding : 15px;
 	color : #b09e56;
 }
-section figure img:hover figcaption {
-	opacity : 0;
-}
+
 section footer img {
 	width : 100%;
 	max-width : 385px;

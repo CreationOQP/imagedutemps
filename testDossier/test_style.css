@@ -5,11 +5,22 @@ html {
 
 section figure  {
 	border : 1px solid blue;
+	
 }
 section figure img {
 	display : block;
 	margin : auto;
 	border : 2px solid red;
 	background-image : url("../image/debardeur_homologue.png");
-	
+	background-size : contain;
+	width : 100%;
+	max-width : 900px;
+	opacity : 1;
 }
+section figure img:hover {
+	opacity : 0;
+}
+section figure figcaption {
+	opacity : 0;
+}
+
