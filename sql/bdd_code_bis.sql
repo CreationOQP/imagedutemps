@@ -38,6 +38,7 @@ USE imagedutemps; */
 		tel_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 		tel_numero VARCHAR(15) NOT NULL,
 		tel_typtel_id INT UNSIGNED NOT NULL,
+		CONSTRAINT fk_tel_typetel FOREIGN KEY (tel_typtel_id) REFERENCES Type_telephone(typtel_id),
 		PRIMARY KEY (tel_id)
 		)
 		ENGINE=INNODB;
@@ -66,6 +67,7 @@ USE imagedutemps; */
 		dem_description TEXT,
 		dem_commentaire TEXT,
 		dem_sta_id  INT UNSIGNED NOT NULL,
+		CONSTRAINT fk_dem_sta FOREIGN KEY (dem_sta_id) REFERENCES Statut(sta_id),
 		PRIMARY KEY (dem_id)
 		)
 		ENGINE=INNODB;
@@ -79,6 +81,8 @@ USE imagedutemps; */
 		pub_pseudo VARCHAR(10) NOT NULL UNIQUE,
 		pub_etc_id INT UNSIGNED NOT NULL,
 		pub_dem_id INT UNSIGNED NOT NULL,
+		CONSTRAINT fk_pub_etc FOREIGN KEY (pub_etc_id) REFERENCES Etat_civil(etc_id),
+		CONSTRAINT fk_pub_dem FOREIGN KEY (pub_dem_id) REFERENCES Denomination(dem_id),
 		PRIMARY KEY (pub_id)
 		)
 		ENGINE=INNODB;
@@ -87,8 +91,7 @@ USE imagedutemps; */
 	CREATE TABLE Contact (
 		con_tel_id INT NOT NULL,
 		con_pub_id INT NOT NULL,
-		PRIMARY KEY (con_tel_id, con_pub_id))
-		ENGINE=INNODB;
+		PRIMARY KEY (con_tel_id, con_pub_id));
 		
 		
 -- Création de la table qualité, préfixe qua --
@@ -108,7 +111,9 @@ USE imagedutemps; */
 		evo_qua_id INT UNSIGNED NOT NULL,
 		evo_date DATE NOT NULL,
 		evo_commentaire TEXT,
-		PRIMARY KEY (evo_id))
+		PRIMARY KEY (evo_id),
+		CONSTRAINT fk_evo_pub FOREIGN KEY (evo_pub_id) REFERENCES Publics(pub_id),
+		CONSTRAINT fk_evo_qua FOREIGN KEY (evo_qua_id) REFERENCES Qualite(qua_id))
 		ENGINE=INNODB;
 
 -- Création de la table Password, préfixe pwd --
@@ -117,7 +122,8 @@ USE imagedutemps; */
 		pwd_mot CHAR(5) UNIQUE,
 		pwd_pub_id INT UNSIGNED NOT NULL,
 		pwd_date DATE NOT NULL,
-		PRIMARY KEY (pwd_id))
+		PRIMARY KEY (pwd_id),
+		CONSTRAINT fk_pwd_pub FOREIGN KEY (pwd_pub_id) REFERENCES Publics(pub_id))
 		ENGINE=INNODB;
 
 -- Création de la table Pays, préfixe pay --
@@ -142,7 +148,9 @@ USE imagedutemps; */
 		vil_nom VARCHAR(25),
 		vil_cp_id INT UNSIGNED NOT NULL,
 		vil_pay_code CHAR(3) NOT NULL,
-		PRIMARY KEY (vil_id))
+		PRIMARY KEY (vil_id),
+		CONSTRAINT fk_vil_cp FOREIGN KEY (vil_cp_id) REFERENCES Code_postal(cp_id),
+		CONSTRAINT fk_vil_pay FOREIGN KEY (vil_pay_code) REFERENCES Pays(pay_code))
 		ENGINE=INNODB;
 		
 -- Création de la table adresse, préfixe adr --
@@ -155,7 +163,9 @@ USE imagedutemps; */
 		adr_mention VARCHAR(20),
 		adr_vil_id INT UNSIGNED NOT NULL,
 		adr_pub_id INT UNSIGNED NOT NULL,
-		PRIMARY KEY (adr_id))
+		PRIMARY KEY (adr_id),
+		CONSTRAINT fk_adr_vil FOREIGN KEY (adr_vil_id) REFERENCES Ville(vil_id),
+		CONSTRAINT fk_adr_pub FOREIGN KEY (adr_pub_id) REFERENCES Publics(pub_id))
 		ENGINE=INNODB;
 
 -- création de la table dns_mail, préfixe dns --
@@ -171,7 +181,9 @@ USE imagedutemps; */
 		utm_nom VARCHAR(250) NOT NULL,
 		utm_dns_id INT UNSIGNED NOT NULL,
 		utm_pub_id INT UNSIGNED NOT NULL,
-		PRIMARY KEY (utm_id))
+		PRIMARY KEY (utm_id),
+		CONSTRAINT fk_utm_id FOREIGN KEY (utm_dns_id) REFERENCES Dns_mail(dns_id),
+		CONSTRAINT fk_utm_pub FOREIGN KEY (utm_pub_id) REFERENCES Publics(pub_id))
 		ENGINE=INNODB;
 
 -- Création de la table époque, préfixe epo --
@@ -221,7 +233,12 @@ USE imagedutemps; */
 		dia_lie_id INT UNSIGNED NOT NULL,
 		dia_typdia_id INT UNSIGNED NOT NULL,
 		dia_pub_id INT UNSIGNED NOT NULL,
-		PRIMARY KEY (dia_id))
+		PRIMARY KEY (dia_id),
+		CONSTRAINT fk_dia_epo FOREIGN KEY (dia_epo_annee) REFERENCES Epoque(epo_annee),
+		CONSTRAINT fk_dia_the FOREIGN KEY (dia_the_id) REFERENCES Theme(the_id),
+		CONSTRAINT fk_dia_lie FOREIGN KEY (dia_lie_id) REFERENCES Lieu(lie_id),
+		CONSTRAINT fk_dia_typdia FOREIGN KEY (dia_typdia_id) REFERENCES Type_diapo(typdia_id),
+		CONSTRAINT fk_dia_pub FOREIGN KEY (dia_pub_id) REFERENCES Publics(pub_id))
 		ENGINE=INNODB;
 		
 -- Création de la table scénario, préfixe sce --
@@ -252,7 +269,10 @@ USE imagedutemps; */
 		forb_pub_id INT UNSIGNED NOT NULL,
 		forb_the_id INT UNSIGNED NOT NULL,
 		forb_lie_id INT UNSIGNED NOT NULL,
-		PRIMARY KEY (forb_id))
+		PRIMARY KEY (forb_id),
+		CONSTRAINT fk_forb_pub FOREIGN KEY (forb_pub_id) REFERENCES Publics(pub_id),
+		CONSTRAINT fk_forb_the FOREIGN KEY (forb_the_id) REFERENCES Theme(the_id),
+		CONSTRAINT fk_forb_lie FOREIGN KEY (forb_lie_id) REFERENCES Lieu(lie_id))
 		ENGINE=INNODB;
 		
 -- Création de la table forumDiscussion préfixe frod --
@@ -264,7 +284,9 @@ USE imagedutemps; */
 		ford_publication BOOLEAN,
 		ford_pub_id INT UNSIGNED NOT NULL,
 		ford_forb_id INT UNSIGNED NOT NULL,
-		PRIMARY KEY (ford_id))
+		PRIMARY KEY (ford_id),
+		CONSTRAINT fk_ford_pub FOREIGN KEY (ford_pub_id) REFERENCES Publics(pub_id),
+		CONSTRAINT fk_ford_forb FOREIGN KEY (ford_forb_id) REFERENCES ForumBillet(forb_id))
 		ENGINE=INNODB;
 
 -- Création de la table messageContact préfixe mco --
@@ -292,52 +314,3 @@ USE imagedutemps; */
 		eto_commentaires TEXT,
 		PRIMARY KEY(eto_id))
 		ENGINE=INNODB;
-		
---  Définition des contraintes de clés étrangères --
-	
-ALTER TABLE Telephone
-	ADD (CONSTRAINT fk_tel_typetel FOREIGN KEY (tel_typtel_id) REFERENCES Type_telephone(typtel_id));
-ALTER TABLE Denomination
-	ADD (CONSTRAINT fk_dem_sta FOREIGN KEY (dem_sta_id) REFERENCES Statut(sta_id));
-ALTER TABLE Publics
-	ADD (CONSTRAINT fk_pub_etc FOREIGN KEY (pub_etc_id) REFERENCES Etat_civil(etc_id));
-ALTER TABLE  Publics
-	ADD (CONSTRAINT fk_pub_dem FOREIGN KEY (pub_dem_id) REFERENCES Denomination(dem_id));
-ALTER TABLE Evolution
-	ADD (CONSTRAINT fk_evo_pub FOREIGN KEY (evo_pub_id) REFERENCES Publics(pub_id));
-ALTER TABLE Evolution
-	ADD (CONSTRAINT fk_evo_qua FOREIGN KEY (evo_qua_id) REFERENCES Qualite(qua_id));
-ALTER TABLE Password
-	ADD (CONSTRAINT fk_pwd_pub FOREIGN KEY (pwd_pub_id) REFERENCES Publics(pub_id));
-ALTER TABLE Ville
-	ADD (CONSTRAINT fk_vil_cp FOREIGN KEY (vil_cp_id) REFERENCES Code_postal(cp_id));
-ALTER TABLE Ville
-	ADD (CONSTRAINT fk_vil_pay FOREIGN KEY (vil_pay_code) REFERENCES Pays(pay_code));
-ALTER TABLE Adresse
-	ADD (CONSTRAINT fk_adr_vil FOREIGN KEY (adr_vil_id) REFERENCES Ville(vil_id));	
-ALTER TABLE Adresse
-	ADD (CONSTRAINT fk_adr_pub FOREIGN KEY (adr_pub_id) REFERENCES Publics(pub_id));
-ALTER TABLE Utilisateur_mail
-	ADD (CONSTRAINT fk_utm_id FOREIGN KEY (utm_dns_id) REFERENCES Dns_mail(dns_id));	
-ALTER TABLE Utilisateur_mail
-	ADD (CONSTRAINT fk_utm_pub FOREIGN KEY (utm_pub_id) REFERENCES Publics(pub_id));	
-ALTER TABLE Diapositive
-	ADD (CONSTRAINT fk_dia_epo FOREIGN KEY (dia_epo_annee) REFERENCES Epoque(epo_annee));
-ALTER TABLE Diapositive
-	ADD (CONSTRAINT fk_dia_the FOREIGN KEY (dia_the_id) REFERENCES Theme(the_id));
-ALTER TABLE Diapositive
-	ADD (CONSTRAINT fk_dia_lie FOREIGN KEY (dia_lie_id) REFERENCES Lieu(lie_id));
-ALTER TABLE Diapositive
-	ADD (CONSTRAINT fk_dia_typdia FOREIGN KEY (dia_typdia_id) REFERENCES Type_diapo(typdia_id));
-ALTER TABLE Diapositive
-	ADD (CONSTRAINT fk_dia_pub FOREIGN KEY (dia_pub_id) REFERENCES Publics(pub_id));	
-ALTER TABLE ForumBillet
-	ADD (CONSTRAINT fk_forb_pub FOREIGN KEY (forb_pub_id) REFERENCES Publics(pub_id));
-ALTER TABLE ForumBillet
-	ADD (CONSTRAINT fk_forb_the FOREIGN KEY (forb_the_id) REFERENCES Theme(the_id));
-ALTER TABLE ForumBillet
-	ADD (CONSTRAINT fk_forb_lie FOREIGN KEY (forb_lie_id) REFERENCES Lieu(lie_id));	
-ALTER TABLE ForumDiscussion
-	ADD (CONSTRAINT fk_ford_pub FOREIGN KEY (ford_pub_id) REFERENCES Publics(pub_id));
-ALTER TABLE ForumDiscussion
-	ADD (CONSTRAINT fk_ford_forb FOREIGN KEY (ford_forb_id) REFERENCES ForumBillet(forb_id));
