@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>Sérialization</title>
+	<title>serialize - match</title>
 	<link rel="stylesheet" type="text/css" href="testDiaporamaStyle.css" />
 	<script src="testDiaporamaScript.js"></script>
 </head>
@@ -29,7 +29,7 @@
 				cheminFichier(),
 				ajoutPhoto()">
 	<section>
-		<h1>Transfert des valeurs d'une BDD de PHP à JavaScript : serialize</h1>
+		<h1>Transfert des valeurs d'une BDD de PHP à JavaScript : serialize - match</h1>
 <!-- 1 -->	<ol>
 				<li>Création du tableau multidimensionnel (5 colonnes) en php</li>
 <!-- 2 -->		<li>Affichage du tableau</li>
@@ -102,7 +102,7 @@
 					</ul>
 				</li>
 				<li>Concaténation de la chaîne string en chemin pour la photo <code>cheminA = patternUU; - cheminAA = "diapo/"+cheminA+".png"; - chemin.innerHTML = cheminAA;</code><br />
-				Chemin : <span id="chemin"></span></li><br />
+				Chemin : <span class="rouge" id="chemin"></span></li><br />
 				
 				<li>Affichage de la photo <code>document.getElementById("photo").src=cheminAA;</code><br />
 				<img id="photo" src=""/></li>
