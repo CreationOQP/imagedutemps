@@ -215,12 +215,13 @@ USE imagedutemps; */
 		dia_publication BOOLEAN,							-- A_021_02
 		dia_creation DATE,									-- A_021_03
 		dia_legend VARCHAR(250),							-- A_021_04
-		dia_commentaire TEXT,								-- A_021_05
-		dia_epo_annee INT UNSIGNED NOT NULL,				-- A_021_06
-		dia_the_id INT UNSIGNED NOT NULL,					-- A_021_07
-		dia_lie_id INT UNSIGNED NOT NULL,					-- A_021_08
-		dia_typdia_id INT UNSIGNED NOT NULL,				-- A_021_09
-		dia_pub_id INT UNSIGNED NOT NULL,					-- A_021_10
+		dia_format CHAR(1),									-- A_021_05
+		dia_commentaire TEXT,								-- A_021_06
+		dia_epo_annee INT UNSIGNED NOT NULL,				-- A_021_07
+		dia_the_id INT UNSIGNED NOT NULL,					-- A_021_08
+		dia_lie_id INT UNSIGNED NOT NULL,					-- A_021_09
+		dia_typdia_id INT UNSIGNED NOT NULL,				-- A_021_10
+		dia_pub_id INT UNSIGNED NOT NULL,					-- A_021_11
 		PRIMARY KEY (dia_id))
 		ENGINE=INNODB;
 		
