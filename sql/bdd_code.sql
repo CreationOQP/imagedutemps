@@ -220,7 +220,7 @@ USE imagedutemps; */
 		dia_epo_annee INT UNSIGNED NOT NULL,				-- A_021_07
 		dia_the_id INT UNSIGNED NOT NULL,					-- A_021_08
 		dia_lie_id INT UNSIGNED NOT NULL,					-- A_021_09
-		dia_typdia_id INT UNSIGNED NOT NULL,				-- A_021_10
+		dia_typ_dia_id INT UNSIGNED NOT NULL,				-- A_021_10
 		dia_pub_id INT UNSIGNED NOT NULL,					-- A_021_11
 		PRIMARY KEY (dia_id))
 		ENGINE=INNODB;

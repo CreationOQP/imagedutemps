@@ -1,0 +1,156 @@
+﻿* {
+	box-sizing: border-box;
+}
+html {
+	width : 100%;
+	height : 100%;
+}
+
+body {
+	/* background : linear-gradient(#1a0000, #4d0000); */
+	background : #363638;
+}
+#cookie {
+	background : white;
+	margin : 10px;
+	padding : 10px;
+	border-radius : 10px 0 10px 10px;
+}
+#cookie input {
+	background : #363638;
+	margin : 3px 0 0 5px;
+	color : white;
+	border : none;
+	border-radius : 3px 0 3px 3px;
+}
+#cookie input:hover {
+	background : white;
+	color : #363638;
+	border : 1px solid black;
+	border-radius : 3px 0 3px 3px;
+}
+nav {
+	float : left;
+	background-image : url("../image/menuEnthousiasmeBlack.png");
+	background-repeat : no-repeat;
+	margin : 20px 0 0 10px;
+}
+nav:hover {
+	background-image : url("../image/menuHumiliteBlack.png");
+}
+nav ul {
+	opacity :0.1;
+	transition : all 0.5s ease-in-out;
+	margin-top : 40px;
+}
+nav:hover ul {
+	opacity : 1;
+}
+nav ul li:hover {				/* Transition sur chaque pays */
+	transform : scale(1.3);
+	transition : transform 0.3s ease-in;
+}
+
+section {
+	margin : 10px 0 0 50px;
+}
+section  header img {
+	display : block;
+	margin : 0 auto;
+	width : 100%;
+	max-width : 500px;
+	height : auto;
+	margin-left: 30%;
+}
+section figure {
+	background-image : url("../image/debardeur_bis.png");
+	background-repeat : no-repeat;
+	background-position : center;
+}
+section figure img {
+	display : block;
+	margin : auto auto;
+	width : 100%;
+	height : auto;
+	max-width : 900px;
+	opacity : 1;
+	transition : all 0.5s ease-in-out;
+}
+
+section figure img:hover {
+	opacity : 0;
+}
+section figure figcaption {
+	position : relative;
+	top : -60px;
+	left : 50%;
+	opacity : 0.8;
+	width : 100%;
+	max-width : 100px;
+	height : auto;
+	background : #363638;
+	border-radius : 20px 20px 0 0;
+	padding : 15px;
+	color : #b09e56;
+}
+
+section footer img {
+	width : 100%;
+	max-width : 385px;
+	height : auto;
+	margin : 20px 0 0 50%;
+}
+
+/* Fenêtre Modal */
+	#modalAccueilFr {
+		position: fixed;	/* Position de la fenêtre modal */
+		z-index: 99999;		/* fenêtre modal au-dessus de toutes les autres */
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0, 0, 0, 0.8);	/* couleur de fond de la fenêtre modal */
+		opacity:0;						/* La fenêtre modal est transparente */
+		transition: all 500ms ease-in;	/* Transition sur l'apparitions de la fenêtre */
+		pointer-events: none;			/* Pointer rendu inefficace */
+	}
+	/* Animations sur le menu */
+		#modalAccueilFr #modalAccueilMenu {
+			max-width : 500px;		/* Largeur maxi du cadre de menu */
+			position : relative;	/* en :target la position sera autre */
+			margin : 35% 10%;
+			padding : 8px;
+			border-radius : 10px 0 10px 10px;
+			background : #363638;
+		}
+		#modalAccueilFr #modalAccueilMenu h1 {
+			text-align : center;
+		}
+		#modalAccueilFr #modalAccueilMenu h1 a {
+			color : #b09e56;
+			font-style : bold;
+			font-size : 150%;
+		}
+		#modalAccueilFr #modalAccueilMenu ul {
+			margin : 10% 20%;
+		}
+		#modalAccueilFr #modalAccueilMenu ul li {
+			margin-top : 15px;
+		}
+		#modalAccueilFr #modalAccueilMenu ul li a {
+			color : #b09e56;
+		}
+		#modalAccueilFr #modalAccueilMenu ul #modalFermer {
+			text-align : right;
+			opacity : 0.5;
+		}
+/* target de la fenêtre modal */
+	#modalAccueilFr:target {
+		opacity : 1;			/* La fenêtre modal est apparente */
+		pointer-events : auto;	/* Le pointeur est actif */
+	}
+	/* target sur le menu du modal */
+		#modalAccueilFr:target #modalAccueilMenu {
+			margin : 10% 35%;
+			transition : all 0.8s ease-in-out;
+		}
