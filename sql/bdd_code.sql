@@ -214,7 +214,7 @@ USE imagedutemps; */
 		dia_id INT UNSIGNED NOT NULL AUTO_INCREMENT,		-- A_021_01
 		dia_publication BOOLEAN,							-- A_021_02
 		dia_date DATE,										-- A_021_03
-		dia_legend VARCHAR(250),							-- A_021_04
+		dia_legend VARCHAR(100),							-- A_021_04
 		dia_format CHAR(1),									-- A_021_05
 		dia_commentaire TEXT,								-- A_021_06
 		dia_enregistrement DATE								-- A_021_07
