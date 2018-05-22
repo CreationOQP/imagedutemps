@@ -1,0 +1,64 @@
+#nouveaute {
+	/* border : 1px solid red; */
+	float : left;
+	width : 100%;
+}
+#nouveaute fieldset {
+	border : 1px solid blue;
+	border-radius : 8px 0 8px 8px;
+}
+#nouveaute fieldset legend {
+	margin-left : 15px;
+	padding : 3px 5px;
+	border-top : 1px solid blue;
+	border-bottom : 1px solid blue;
+}
+
+#nouveaute #theme {
+	float : left;
+	width : 15%;
+	margin : 10px 0 10px 15px;
+}
+#nouveaute #theme .champ {
+	margin-left : 30%;
+	border : 1px solid green;
+}
+#nouveaute #lieu {
+	float : left;
+	width : 15%;
+	margin : 10px 0 10px 15px;
+}
+#nouveaute #lieu .champ {
+	margin-left : 30%;
+	border : 1px solid green;
+}
+#nouveaute #type {
+	float : left;
+	width : 15%;
+	margin : 10px 0 10px 15px;
+}
+#nouveaute #type .champ {
+	margin-left : 30%;
+	border : 1px solid green;
+}
+#nouveaute #epoque {
+	float : left;
+	width : 15%;
+	margin : 10px 0 10px 15px;
+}
+#nouveaute #epoque .champ {
+	margin-left : 30%;
+	border : 1px solid green;
+}
+#ajout_photo fieldset {
+	clear : both;
+	width : 40%;
+	border : 1px solid blue;
+	border-radius : 10px 0 10px 10px;
+}
+#ajout_photo fieldset legend {
+	margin-left : 15px;
+	padding : 3px 5px;
+	border-top : 1px solid blue;
+	border-bottom : 1px solid blue;
+}

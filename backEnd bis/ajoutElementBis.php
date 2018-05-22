@@ -4,9 +4,8 @@ $_SESSION['langue'] = 'fr';
 include "../include/langageInclude.php";
 include "../class/connectionBDD.php";
 /* $connect = new connectionBDD('localhost', 'lmouutej_imagedutemps', 'utf8', 'lmouutej_noel', 'C=z={cN]BVB8'); */
-/* $bdd = (new ConnectionBDD())->getLiaison(); */
-$bdd = ConnectionBDD::getLiaison();
-
+$connect = new connectionBDD();
+$bdd = $connect->getLiaison();
 ?>
 
 
@@ -27,7 +26,7 @@ $bdd = ConnectionBDD::getLiaison();
 	<section>
 		<div id="nouveaute">
 			<div id="theme">
-				<form method="post" action="../post/ajoutPost.php">
+				<form method="post" action="../post/ajoutElementPost.php">
 					<fieldset>
 						<legend><?php echo _AJOUTHEME; ?></legend>
 						<p><input type="text" name="nom_theme" id="nom_theme" class="champ" placeholder="<?php echo _NOUVEAUTHEME; ?>" /></p>
@@ -40,7 +39,7 @@ $bdd = ConnectionBDD::getLiaison();
 				</form>
 			</div>
 			<div id="lieu">
-				<form method="post" action="../post/ajoutPost.php">
+				<form method="post" action="../post/ajoutElementPost.php">
 					<fieldset>
 						<legend><?php echo _AJOUTLIEU; ?></legend>
 						<p><input type="text" name="nom_lieu" id="nom_lieu" class="champ" placeholder="<?php echo _NOUVEAULIEU; ?>" /></p>
@@ -53,7 +52,7 @@ $bdd = ConnectionBDD::getLiaison();
 				</form>
 			</div>
 			<div id="type">
-				<form method="post" action="../post/ajoutPost.php">
+				<form method="post" action="../post/ajoutElementPost.php">
 					<fieldset>
 						<legend><?php echo _AJOUTYPE; ?></legend>
 						<p><input type="text" name="nom_type" id="nom_type" class="champ" placeholder="<?php echo _NOUVEAUTYPE; ?>" /></p>
@@ -66,7 +65,7 @@ $bdd = ConnectionBDD::getLiaison();
 				</form>
 			</div>
 			<div id="epoque">
-				<form method="post" action="../post/ajoutPost.php">
+				<form method="post" action="../post/ajoutElementPost.php">
 					<fieldset>
 						<legend><?php echo _AJOUTEPOQUE; ?></legend>
 						<p><input type="text" name="nom_epoque" id="nom_epoque" class="champ" placeholder="<?php echo _NOUVELLEPOQUE; ?>" /></p>
@@ -92,28 +91,32 @@ $bdd = ConnectionBDD::getLiaison();
 				</ol>
 			</p>
 			<p><?php echo _APPLICATIONVA; ?></p>
-			<form method="post" action="../post/ajoutPost.php" enctype="multipart/form-data" >
+			<form method="post" action="../post/ajoutElement.php">
 				<fieldset>
 					<legend><?php echo _AJOUTDIAPO; ?></legend>
-					<p title="<?php echo _SELECTIONNEZVOTRE; ?>">
-						<label for="uploadFichier" id="uploadLabel" class="etiquette"><?php echo _VOTREFICHIER; ?></label>
-						<input type="file" name="uploadFichier" id="uploadFichier" class="champ" required />
-						<input type="hidden" name="MAX_FILE_SIZE" value="100000" /></p>					
-					
+					<p title="<?php echo _SELECTIONNEZVOTRE; ?>"><label for="uploadFichier" id="uploadLabel" class="etiquette"><?php echo _VOTREFICHIER; ?></label><input type="file" name="uploadFichier" id="uploadFichier" class="champ" />
+						<input type="hidden" name="MAX_FILE_SIZE" value="100000" /></p>
 					<p title="<?php echo _POSSEDEZVOUS; ?>"><?php echo _AUTORISATIONPUBLICATION; ?><br />
-					<label for="ouiPublication">Oui</label><input type="radio" id="ouiPublication" name="publication" value=1 required />
-					<label for="nonPublication">Non</label><input type="radio" id="NonPublication" name="publication" value=0 />
+					<label for="ouiPublication">Oui</label><input type="radio" id="ouiPublication" name="autorisation" value="Oui" />
+					<label for="nonPublication">Non</label><input type="radio" id="NonPublication" name="autorisation" value="Non" />
 					</p>
 					
 					<p title="<?php echo _DATEORIGINALE; ?>"><label for="date_diapo" id="date_diapo_label" class="etiquette"><?php echo _DATEORIGINE; ?></label>
-					<input type="date" name="date_diapo" id="date_diapo" class="champ" required /></p>
+					<input type="date" name="date_diapo" id="date_diapo" class="champ" /></p>
 					
 					<p title="<?php echo _LEGENDETRES; ?>"><label for="legende_diapo" id="legende_diapo" class="etiquette"><?php echo _COURTELEGENDE; ?> </label>
 					<input type="text" name="legende_diapo" maxlength="100" id="legende_diapo" class="champ" placeholder="<?php echo _COURTELEGENDE; ?>" /></p>
 					
+					<p title="<?php echo _SILEBORD; ?>"><?php echo _FORMATDIAPO; ?><br />
+					<label for="formatV" ><?php echo _VERTICAL; ?></label><input type="radio" name="format" id="formatV" value="V" />
+					<label for="formatH" ><?php echo _HORIZONTAL; ?></label><input type="radio" name="format" id="formatH" value="H" /></p>
+					
+					<p title="<?php echo _DATENREGISTREMENTDE; ?>">
+					<label for="date_enregistrement" id="date_enregistrement_label" class="etiquette"><?php echo _DATENREGISTREMENT; ?></label>
+					<input type="date" name="date_enregistrment" id="date_enregistrement" class="champ" /></p>
+					
 					<p title="<?php echo _CHOISISSEZVALEUR; ?>"><label for="liste_annee" id="liste_annee_label" class="etiquette"><?php echo _EPOQUE; ?></label>
-					<select name="epoque" id="liste_annee" class="champ">
-						<option>À choisir</option>
+					<select id="liste_annee" class="champ">
 						<?php
 							$reponseEpoque = $bdd->prepare('SELECT epo_annee FROM Epoque');
 							$reponseEpoque->execute();
@@ -123,8 +126,7 @@ $bdd = ConnectionBDD::getLiaison();
 					</select></p>
 					
 					<p title="<?php echo _CHOISISSEZVALEUR; ?>"><label for="liste_theme" id="liste_theme_label" class="etiquette"><?php echo _THEME; ?></label>
-					<select name="theme" id="liste_theme" class="champ">
-						<option>À choisir</option>
+					<select id="liste_theme" class="champ">
 						<?php
 							$reponseTheme = $bdd->prepare('SELECT the_id, the_nom FROM Theme');
 							$reponseTheme->execute();
@@ -134,8 +136,7 @@ $bdd = ConnectionBDD::getLiaison();
 					</select></p>
 					
 					<p title="<?php echo _CHOISISSEZVALEUR; ?>"><label for="liste_lieu" id="liste_lieu_label" class="etiquette"><?php echo _LIEU; ?></label>
-					<select name="lieu" id="liste_lieu" class="champ">
-					<option>À choisir</option>
+					<select id="liste_lieu" class="champ">
 						<?php
 							$reponseLieu = $bdd->prepare('SELECT lie_id, lie_nom FROM Lieu');
 							$reponseLieu->execute();
@@ -145,8 +146,7 @@ $bdd = ConnectionBDD::getLiaison();
 					</select></p>
 					
 					<p title="<?php echo _CHOISISSEZVALEUR; ?>"><label for="liste_type" id="liste_type_label" class="etiquette"><?php echo _TYPE; ?></label>
-					<select name="type" id="liste_type" class="champ">
-					<option>À choisir</option>
+					<select id="liste_type" class="champ">
 						<?php
 							$reponseType = $bdd->prepare('SELECT typdia_id, typdia_nom FROM Type_diapo');
 							$reponseType->execute();
@@ -155,15 +155,10 @@ $bdd = ConnectionBDD::getLiaison();
 						?>
 					</select></p>
 					
-					<p><label id="commentaire_label" class="label">Commentaire</label><br />
-					<textarea name="commentaire_diapo" id="commentaire_diapo" class="champ" rows="3" cols="20"></textarea></p>
-					
 					<p><button type="submit" name="bouton_diapo" id="bouton_diapo" class="bouton"><?php echo _AJOUTER; ?></button>
 					<button type="reset" name="bouton_diapo_reset" id="bouton_diapo_resest" class="bouton"><?php echo _EFFACER; ?></button></p>
 				</fieldset>
 			</form>
-			<p><img src="../image/1m.png"><img src="../image/2m.png"><img src="../image/debardeurMiniatures.png"></p>
-			<p><img src="../image/debardeur.png"></p>
 		</div>
 	</section>
 </body>

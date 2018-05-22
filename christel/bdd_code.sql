@@ -59,14 +59,14 @@ USE imagedutemps; */
 		)
 		ENGINE=INNODB;
 		
--- Création de la table Dénomination. Préfixe den --
+-- Création de la table Dénomination. Préfixe dem --
 	CREATE TABLE Denomination (								-- A_005_
-		den_id INT UNSIGNED NOT NULL AUTO_INCREMENT,		-- A_005_01
-		den_nom VARCHAR(40) NOT NULL,						-- A_005_02
-		den_description TEXT,								-- A_005_03
-		den_commentaire TEXT,								-- A_005_04
-		den_sta_id  INT UNSIGNED NOT NULL,					-- A_005_05
-		PRIMARY KEY (den_id)
+		dem_id INT UNSIGNED NOT NULL AUTO_INCREMENT,		-- A_005_01
+		dem_nom VARCHAR(40) NOT NULL,						-- A_005_02
+		dem_description TEXT,								-- A_005_03
+		dem_commentaire TEXT,								-- A_005_04
+		dem_sta_id  INT UNSIGNED NOT NULL,					-- A_005_05
+		PRIMARY KEY (dem_id)
 		)
 		ENGINE=INNODB;
 		
@@ -78,7 +78,7 @@ USE imagedutemps; */
 		pub_date DATE,										-- A_006_04
 		pub_pseudo VARCHAR(10) NOT NULL UNIQUE,				-- A_006_05
 		pub_etc_id INT UNSIGNED NOT NULL,					-- A_006_06
-		pub_den_id INT UNSIGNED NOT NULL,					-- A_006_07
+		pub_dem_id INT UNSIGNED NOT NULL,					-- A_006_07
 		PRIMARY KEY (pub_id)
 		)
 		ENGINE=INNODB;
@@ -217,11 +217,11 @@ USE imagedutemps; */
 		dia_legend VARCHAR(100),							-- A_021_04
 		dia_format CHAR(1),									-- A_021_05
 		dia_commentaire TEXT,								-- A_021_06
-		dia_enregistrement DATE,								-- A_021_07
+		dia_enregistrement DATE								-- A_021_07
 		dia_epo_annee INT UNSIGNED NOT NULL,				-- A_021_08
 		dia_the_id INT UNSIGNED NOT NULL,					-- A_021_09
 		dia_lie_id INT UNSIGNED NOT NULL,					-- A_021_10
-		dia_typdia_id INT UNSIGNED NOT NULL,				-- A_021_11
+		dia_typ_dia_id INT UNSIGNED NOT NULL,				-- A_021_11
 		dia_pub_id INT UNSIGNED NOT NULL,					-- A_021_12
 		PRIMARY KEY (dia_id))
 		ENGINE=INNODB;
@@ -300,11 +300,11 @@ USE imagedutemps; */
 ALTER TABLE Telephone
 	ADD (CONSTRAINT fk_tel_typetel FOREIGN KEY (tel_typtel_id) REFERENCES Type_telephone(typtel_id));
 ALTER TABLE Denomination
-	ADD (CONSTRAINT fk_den_sta FOREIGN KEY (den_sta_id) REFERENCES Statut(sta_id));
+	ADD (CONSTRAINT fk_dem_sta FOREIGN KEY (dem_sta_id) REFERENCES Statut(sta_id));
 ALTER TABLE Publics
 	ADD (CONSTRAINT fk_pub_etc FOREIGN KEY (pub_etc_id) REFERENCES Etat_civil(etc_id));
 ALTER TABLE  Publics
-	ADD (CONSTRAINT fk_pub_den FOREIGN KEY (pub_den_id) REFERENCES Denomination(den_id));
+	ADD (CONSTRAINT fk_pub_dem FOREIGN KEY (pub_dem_id) REFERENCES Denomination(dem_id));
 ALTER TABLE Evolution
 	ADD (CONSTRAINT fk_evo_pub FOREIGN KEY (evo_pub_id) REFERENCES Publics(pub_id));
 ALTER TABLE Evolution

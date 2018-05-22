@@ -11,8 +11,7 @@
 
 -- Insertion des téléphone --
 	INSERT INTO Telephone (tel_numero, tel_typtel_id)
-					VALUES ('Pas de numéro', 1),
-						('01 00 00 00 02', 1),
+					VALUES ('01 00 00 00 02', 1),
 						('01 00 00 00 03', 2),
 						('01 00 00 00 04', 4),
 						('06 00 00 00 05', 3),
@@ -41,21 +40,21 @@
 
 -- Insertion des données de la table statut --
 	INSERT INTO Statut (sta_nom, sta_commentaire)
-			VALUES ('SARL', 'Commentaire sur le statut de la SARL'),
+			VALUES('SARL', 'Commentaire sur le statut de la SARL'),
 					('SAS', 'Commentaire sur le statut de la SAS'),
 					('Mairie', 'Commentaire sur le statut mairie'),
 					('Association', 'Commentaire sur le statut association'),
 					('Particulier', 'Commentaire sur le statut particulier');
 					
 -- Insertion des données de la table Dénomination --
-	INSERT INTO Denomination (dem_nom, dem_description, dem_commentaire, dem_sta_id)
+	INSERT INTO Denomination (den_nom, den_description, den_commentaire, den_sta_id)
 		VALUES ('Particulier', NULL, NULL, 5),
 				('Lit et Mixe', 'Description de la mairie de Lit et Mixe', 'Commentaire sur la mairie de Lit et Mixe', 3),
 				('Lesperon', 'Description de la mairie de Lesperon', 'Commentaire sur la mairie de Lesperon', 3),
 				('NALOPHOTO', 'Description sur association Nalophoto', 'Commentaire sur association Nalophoto', 4);
 			
 -- Inertion des données du publics, préfixe pub  --
-	INSERT INTO Publics (pub_nom, pub_prenom, pub_date, pub_pseudo, pub_etc_id, pub_dem_id)
+	INSERT INTO Publics (pub_nom, pub_prenom, pub_date, pub_pseudo, pub_etc_id, pub_den_id)
 				VALUES ('DON_1', 'Prénom 1', '2018-01-01', 'Pseudo 1', 1, 1),
 						('DON_2', 'Prénom 2', '2018-01-01', 'Pseudo 2', 2, 1),
 						('DON_3', 'Prénom 3', '2018-01-01', 'Pseudo 3', 3, 1),
@@ -170,7 +169,8 @@
 						
 -- Insertion des données dans la table code postal --
 	INSERT INTO Code_postal (cp_code)
-				VALUES (40170),
+				VALUES (00000),
+						(40170),
 						(40100),
 						(95820);
 				
@@ -184,7 +184,7 @@
 
 -- Insertion des données dans la table adresse --
 	INSERT INTO Adresse (adr_lieu, adr_voirie, adr_mention, adr_vil_id, adr_pub_id)
-		VALUES (NULL, '251, avenue du Marensin', NULL, 1, 1),
+		VALUES(NULL, '251, avenue du Marensin', NULL, 1, 1),
 				('lieu 02', 'voirie 02', 'mention 02', 1, 2),
 				('lieu 03', 'voirie 03', 'mention 03', 1, 3),
 				('lieu 04', 'voirie 04', 'mention 04', 1, 4),
@@ -268,9 +268,8 @@
 					('type 5', 'Description du type 5', 'commentaire du type 5');
 
 -- Insertion des données dans la table diapositive --
-	INSERT INTO Diapositive (dia_publication, dia_date, dia_legend, dia_commentaire, dia_enregistrement dia_epo_annee, dia_the_id, dia_lie_id, dia_typdia_id, dia_pub_id)
-			VALUES (0, '1918-01-01', 'Légende diapositive 1', 'Commentaire diapositive 1', '2018-03-25', 1900, 1, 5, 1, 1),
-					(1, '1918-01-01', 'Légende diapositive 2', 'Commentaire diapositive 2', '2018-03-25', 1900, 1, 5, 1, 2),
+	INSERT INTO Diapositive (dia_publication, dia_date, dia_legend, dia_commentaire, dia_enregistrement, dia_epo_annee, dia_the_id, dia_lie_id, dia_typdia_id, dia_pub_id)
+			VALUES(1, '1918-01-01', 'Légende diapositive 2', 'Commentaire diapositive 2', '2018-03-25', 1900, 1, 5, 1, 2),
 					(1, '1918-01-01', 'Légende diapositive 3', 'Commentaire diapositive 3', '2018-03-25', 1900, 1, 5, 1, 3),
 					(1, '1918-01-01', 'Légende diapositive 4', 'Commentaire diapositive 4', '2018-03-25', 1900, 1, 5, 1, 4),
 					(1, '1918-01-01', 'Légende diapositive 5', 'Commentaire diapositive 5', '2018-03-25', 1900, 2, 4, 1, 5),
