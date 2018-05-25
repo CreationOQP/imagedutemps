@@ -114,7 +114,7 @@ USE imagedutemps; */
 -- Création de la table Password, préfixe pwd --
 	CREATE TABLE Password (									-- A_010_
 		pwd_id INT UNSIGNED NOT NULL AUTO_INCREMENT,		-- A_010_01
-		pwd_mot CHAR(5) UNIQUE,								-- A_010_02
+		pwd_mot CHAR(255) UNIQUE,							-- A_010_02
 		pwd_pub_id INT UNSIGNED NOT NULL,					-- A_010_03
 		pwd_date DATE NOT NULL,								-- A_010_04
 		PRIMARY KEY (pwd_id))
