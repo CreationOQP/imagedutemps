@@ -6,25 +6,22 @@ $bdd = ConnectionBDD::getLiaison();
 
 //  Thème
 	if (isset($_POST['bouton_theme'])) {
-		$nom = htmlspecialchars($_POST['nom_theme'], ENT_QUOTES);
-		$description = htmlspecialchars($_POST['description_theme'], ENT_QUOTES);
-		$commentaire = htmlspecialchars($_POST['commentaire_theme'], ENT_QUOTES);
+		$theNom = htmlspecialchars($_POST['nom_theme'], ENT_QUOTES);
+		$theDescription = htmlspecialchars($_POST['description_theme'], ENT_QUOTES);
+		$theCommentaire = htmlspecialchars($_POST['commentaire_theme'], ENT_QUOTES);
 		include '../class/themeManager.php';
-		// Instantation de la classe
-		$rajout = (new ThemeManager())->addTheme($bdd, $nom, $description, $commentaire);
-		/* la syntaxe ci-dessus est équivalente à ci-dessous
-		$rajout = (new Ajout())->addTheme($bdd, $nom, $description, $commentaire);
-		$rajout->addTheme($bdd, $nom, $description, $commentaire); */
+		$ajout = new ThemeManager($bdd, $theNom, $theDescription, $theCommentaire, $theId);
+		$ajout->addTheme($bdd, $theNom, $theDescription, $theCommentaire);
 	}
 
 // Lieu	
 	if (isset($_POST['bouton_lieu'])) {
-		$nom = htmlspecialchars($_POST['nom_lieu'], ENT_QUOTES);
-		$description = htmlspecialchars($_POST['description_lieu'], ENT_QUOTES);
-		$commentaire = htmlspecialchars($_POST['commentaire_lieu'], ENT_QUOTES);
+		$lieNom = htmlspecialchars($_POST['nom_lieu'], ENT_QUOTES);
+		$lieDescription = htmlspecialchars($_POST['description_lieu'], ENT_QUOTES);
+		$lieCommentaire = htmlspecialchars($_POST['commentaire_lieu'], ENT_QUOTES);
 		include '../class/lieuManager.php';
-		// Instantation de la classe
-		$rajout = (new LieuManager())->addLieu($bdd, $nom, $description, $commentaire);
+		$ajout = new lieuManager($bdd, $lieNom, $lieDescription, $lieCommentaire, $lieId);
+		$ajout->addLieu($bdd, $lieNom, $lieDescription, $lieCommentaire);
 	}
 	
 // Type
@@ -33,8 +30,8 @@ $bdd = ConnectionBDD::getLiaison();
 		$typDiaDescription = htmlspecialChars($_POST['description_type'], ENT_QUOTES);
 		$typDiaCommentaire = htmlspecialChars($_POST['commentaire_type'], ENT_QUOTES);
 		include '../class/typeManager.php';
-		// Instantation de la classe
-		$rajout = (new TypeManager())->addType($bdd, $typDiaNom, $typDiaDescription, $typDiaCommentaire);
+		$ajout = new TypeManager($bdd, $typDiaNom, $typDiaDescription, $typDiaCommentaire, $typDiaId);
+		$ajout->addType($bdd, $typDiaNom, $typDiaDescription, $typDiaCommentaire);
 	}
 	
 // Epoque
@@ -44,7 +41,8 @@ $bdd = ConnectionBDD::getLiaison();
 		$epoCommentaire = htmlspecialChars($_POST['commentaire_epoque'], ENT_QUOTES);
 		include '../class/epoqueManager.php';
 		// Instantation de la classe
-		$rajout = (new EpoqueManager())->addEpoque($bdd, $epoAnnee, $epoDescription, $epoCommentaire);
+		$ajout = new EpoqueManager($bdd, $epoAnnee, $epoDescription, $epoCommentaire);
+		$ajout->addEpoque($bdd, $epoAnnee, $epoDescription, $epoCommentaire);
 	}
 
 // Diapo
@@ -69,4 +67,53 @@ $bdd = ConnectionBDD::getLiaison();
 		$ajout->CreateMiniature($bdd);
 	}
 
+// Puyblic
+	if (isset($_POST['bouton_public'])) {
+		extract($_POST);
+		include '../class/publicManager.php';
+		$ajout = new PublicManager($bdd, $nouveau_etc_nom, $etc_nom, $nouveau_sta_nom, $sta_nom, $commentaire_statut, $nouveau_den_nom, $den_nom, $den_description, $den_commentaire, $pub_nom, $pub_prenom, $pub_pseudo, $nouvelle_qua_nom, $qua_nom, $qua_description, $qua_commentaire, $nouveau_pay_code, $nouveau_pay_nom, $pay_nom, $pay_description, $pay_commentaire, $nouveau_cp_code, $cp_code, $nouvelle_vil_nom, $vil_nom);
+		
+		$ajout->verification($nouveau_etc_nom, $etc_nom, $nouveau_sta_nom, $sta_nom, $nouveau_den_nom, $den_nom, $nouvelle_qua_nom, $qua_nom, $nouveau_pay_nom, $pay_nom, $nouveau_cp_code, $cp_code, $nouvelle_vil_nom, $vil_nom);
+		$ajout->etatCivil($bdd, $nouveau_etc_nom, $etc_nom);
+		$ajout->statutJuridique($bdd, $nouveau_sta_nom, $sta_nom, $commentaire_statut);
+		$ajout->denomination($bdd, $nouveau_den_nom, $den_nom, $den_description, $den_commentaire);
+		$ajout->enregistrementPublic($bdd, $pub_nom, $pub_prenom, $pub_pseudo);
+		$ajout->qualite($bdd, $nouvelle_qua_nom, $qua_nom, $qua_description, $qua_commentaire);
+		$ajout->pays($bdd, $nouveau_pay_code, $nouveau_pay_nom, $pay_nom, $pay_description, $pay_commentaire);
+		$ajout->codePostal($bdd, $nouveau_cp_code, $cp_code);
+		$ajout->ville($bdd, $nouvelle_vil_nom, $vil_nom);
+		
+		/* $ajout = new PublicManager($bdd, $etc_nom, $sta_nom, $qua_nom, $cp_code, $vil_nom, $pay_nom, $type_telephone, $nouveau_etc_nom, $nouveau_sta_nom, $nouvelle_qua_nom, $nouveau_cp_code, $nouvelle_vil_nom, $nouveau_pay_nom, $nouveau_type_telephone, $pub_nom, $pub_prenom, $pub_pseudo, $nouveau_den_nom, $den_nom, $nouveau_pay_code, $adr_lieu, $adr_voirie, $adr_mention, $adresse_email, $numero_telephone);
+		
+		$ajout->vérification($etc_nom, $sta_nom, $qua_nom, $cp_code, $vil_nom, $pay_nom, $type_telephone, $nouveau_etc_nom, $nouveau_sta_nom, $nouvelle_qua_nom, $nouveau_cp_code, $nouvelle_vil_nom, $nouveau_pay_nom, $nouveau_type_telephone);
+		
+		$ajout->statutJuridique($nouveau_sta_nom, $sta_nom);
+		
+		$ajout->denomination($nouveau_den_nom, $den_nom);
+		
+		$ajout->etatCivil($bdd, $etc_nom);
+		
+		$ajout->enregistrementPublic($bdd, $pub_nom, $pub_prenom, $pub_pseudo);
+		
+		$ajout->qualite($nouvelle_qua_nom, $qua_nom);
+		
+		$ajout->pays($nouveau_pay_code, $nouveau_pay_nom, $pay_nom);
+		
+		$ajout->codePostal($nouveau_cp_code, $cp_code);
+		
+		$ajout->ville($nouvelle_vil_nom, $vil_nom);
+		
+		$ajout->adresse($adr_lieu, $adr_voirie, $adr_mention);
+		
+		$ajout->email($adresse_email);
+		
+		$ajout->typeTelephone($nouveau_type_telephone, $type_telephone);
+		
+		$ajout->telephone($numero_telephone); */
+		
+		header('Location:../backEnd/ajoutPublic.php');
+		exit();
+	}
+	
+	
 ?>

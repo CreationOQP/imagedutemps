@@ -148,13 +148,11 @@ USE imagedutemps; */
 -- Création de la table adresse, préfixe adr --
 	CREATE TABLE Adresse (									-- A_014_
 		adr_id INT UNSIGNED NOT NULL AUTO_INCREMENT,		-- A_014_01
-		adr_denomination VARCHAR(20),						-- A_014_02
-		adr_destinataire VARCHAR(20),						-- A_014_03
-		adr_lieu VARCHAR(30),								-- A_014_04
-		adr_voirie VARCHAR(30),								-- A_014_05
-		adr_mention VARCHAR(20),							-- A_014_06
-		adr_vil_id INT UNSIGNED NOT NULL,					-- A_014_07
-		adr_pub_id INT UNSIGNED NOT NULL,					-- A_014_08
+		adr_lieu VARCHAR(30),								-- A_014_02
+		adr_voirie VARCHAR(30),								-- A_014_03
+		adr_mention VARCHAR(20),							-- A_014_04
+		adr_vil_id INT UNSIGNED NOT NULL,					-- A_014_05
+		adr_pub_id INT UNSIGNED NOT NULL,					-- A_014_06
 		PRIMARY KEY (adr_id))
 		ENGINE=INNODB;
 

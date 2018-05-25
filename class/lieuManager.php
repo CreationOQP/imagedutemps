@@ -2,10 +2,18 @@
 
 Class LieuManager{
 	
-	
 	private $lieNom;
 	private $lieDescription;
 	private $lieCommentaire;
+	private $lieId;
+	
+	public function __construct($bdd, $lieNom, $lieDescription, $lieCommentaire, $lieId) {
+		$this->bdd = $bdd;
+		$this->lieNom = $lieNom;
+		$this->lieDescription = $lieDescription;
+		$this->lieCommentaire = $lieCommentaire;
+		$this->lieId = $lieId;
+	}
 	
 	public function addLieu($bdd, $lieNom, $lieDescription, $lieCommentaire) {
 		// Vérification si le lieu existe déjà
@@ -87,7 +95,5 @@ Class LieuManager{
 	}
 
 }
-
-
 ?>
 

@@ -87,9 +87,7 @@ Class DiapoManager {
 										'type' => $type,
 										'donateur' => $public));		// public à modifier
 			$requeteEnregistrement->closeCursor();
-			/* $_SESSION['message'] = 'Le téléchargement 100% réussi';
-			header('Location:../backEnd/ajoutElement.php');
-			exit(); */
+			
 		} else {
 			$_SESSION['message'] = 'Le téléchargement est un échec';
 			header('Location:../backEnd/ajoutElement.php');

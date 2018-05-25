@@ -1,8 +1,9 @@
 <?php
 session_start();
 $_SESSION['langue'] = 'fr';
+$_SESSION['autorisation'] = 'administrateur';
 include "../include/langageInclude.php";
-
+include "../include/droitUtilisation.php";
 ?>
 
 
@@ -25,6 +26,7 @@ include "../include/langageInclude.php";
 			$_SESSION['message'] = 'Bonjour '.$_SESSION['utilisateur'].', il fait beau !';
 		?>
 		<p><a href="ajoutElement.php" >Ajout élément</a></p>
+		<p><a href="ajoutPublic.php">Ajout de personne</a></p>
 		<p><a href="modificationEpoque.php">Modification époque</a></p>
 		<p><a href="modificationLieu.php">Modification lieu</a></p>
 		<p><a href="modificationTheme.php">Modification theme</a></p>

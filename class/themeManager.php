@@ -5,6 +5,17 @@ Class ThemeManager{
 	private $theNom;
 	private $theDescription;
 	private $theCommentaire;
+	private $theId;
+	
+	public function __construct($bdd, $theNom, $theDescription, $theCommentaire, $theId) {
+		$this->bdd = $bdd;
+		$this->theNom = $theNom;
+		$this->theDescription = $theDescription;
+		$this->theCommentaire = $theCommentaire;
+		$this->theId = $theId;
+	}
+	
+	
 	public function addTheme($bdd, $theNom, $theDescription, $theCommentaire) {
 		// Vérification si le theme existe déjà
 		$requete = $bdd->prepare('SELECT the_nom FROM Theme WHERE the_nom = ?');

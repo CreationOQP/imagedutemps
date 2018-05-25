@@ -6,6 +6,16 @@ Class TypeManager{
 	private $typDiaNom;
 	private $typDiaDescription;
 	private $typDiaCommentaire;
+	private $typDiaId;
+	
+	public function __construct($bdd, $typDiaNom, $typDiaDescription, $typDiaCommentaire, $typDiaId) {
+		$this->bdd = $bdd;
+		$this->typDiaNom = $typDiaNom;
+		$this->typDiaDescription = $typDiaDescription;
+		$this->typDiaCommentaire = $typDiaCommentaire;
+		$this->typDiaId = $typDiaId;
+	}
+	
 	public function addType($bdd, $typDiaNom, $typDiaDescription, $typDiaCommentaire) {
 		// Vérification si le type existe déjà
 		$requete = $bdd->prepare('SELECT typdia_nom FROM Type_diapo WHERE typdia_nom = ?');

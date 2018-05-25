@@ -2,6 +2,7 @@
 session_start();
 $_SESSION['langue'] = 'fr';
 include "../include/langageInclude.php";
+include "../include/droitUtilisation.php";
 include "../class/connectionBDD.php";
 $bdd = ConnectionBDD::getLiaison();
 ?>
@@ -35,12 +36,12 @@ $bdd = ConnectionBDD::getLiaison();
 					</tr>
 				</thead>
 				<tbody id="ligneContenuType" class="ligneContenu">
-						<?php $requete = $bdd->prepare('SELECT dia_typ_dia_id, typdia_nom, dia_id FROM Diapositive JOIN Type_diapo ON typdia_id = dia_typ_dia_id ');
+						<?php $requete = $bdd->prepare('SELECT dia_typdia_id, typdia_nom, dia_id FROM Diapositive JOIN Type_diapo ON typdia_id = dia_typdia_id ');
 						$requete->execute();
 						WHILE ($donnee = $requete->fetch()) { ?>
 					<tr>
 					<td class="listeChamp" class="listeChampType">
-							<?php echo $donnee['dia_typ_dia_id']; ?>
+							<?php echo $donnee['dia_typdia_id']; ?>
 						</td>
 						<td class="listeChamp" class="listeChampType">
 							<?php echo $donnee['typdia_nom']; ?>
@@ -67,7 +68,7 @@ $bdd = ConnectionBDD::getLiaison();
 					<p><label for="nom_type" id="label_nom_type" class="label">Type à supprimer</label>
 					<select name="nom_type" id="liste_type" class="champ">
 						<?php
-							$requeteSuppression = $bdd->prepare('SELECT typdia_nom FROM Type_diapo WHERE typdia_id NOT IN (SELECT dia_typ_dia_id FROM Diapositive)');
+							$requeteSuppression = $bdd->prepare('SELECT typdia_nom FROM Type_diapo WHERE typdia_id NOT IN (SELECT dia_typdia_id FROM Diapositive)');
 							$requeteSuppression->execute();
 							WHILE ($donneeSuppression = $requeteSuppression->fetch()) {
 								echo '<option>'.$donneeSuppression['typdia_nom'].'</option>'; } ?>

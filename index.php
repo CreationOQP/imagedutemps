@@ -1,4 +1,5 @@
 ﻿<?php
+	session_start();
 	$affichage = "visibility";
 	if (isset($_COOKIE["acceptation"])) {
 		$affichage = "none";
@@ -51,6 +52,7 @@
 		
 		<footer>
 			<img src="image/legende.png" alt="titre" id="légende" />
+			<h2><?php echo $_SESSION['message']; ?>
 		</footer>
 	</section>
 	

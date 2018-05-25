@@ -7,6 +7,13 @@ Class EpoqueManager{
 	private $epoDescription;
 	private $epoCommentaire;
 	
+	public function __construct($bdd, $epoAnnee, $epoDescription, $epoCommentaire) {
+		$this->bdd = $bdd;
+		$this->epoAnnee = $epoAnnee;
+		$this->epoDescription = $epoDescription;
+		$this->epoCommentaire = $epoCommentaire;
+	}
+	
 	public function addEpoque($bdd, $epoAnnee, $epoDescription, $epoCommentaire) {
 		// Vérification si l'epoque existe déjà
 		$requete = $bdd->prepare('SELECT epo_annee FROM Epoque WHERE epo_annee = ?');

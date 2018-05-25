@@ -2,9 +2,8 @@
 session_start();
 $_SESSION['langue'] = 'fr';
 include "../include/langageInclude.php";
+include "../include/droitUtilisation.php";
 include "../class/connectionBDD.php";
-/* $connect = new connectionBDD('localhost', 'lmouutej_imagedutemps', 'utf8', 'lmouutej_noel', 'C=z={cN]BVB8'); */
-/* $bdd = (new ConnectionBDD())->getLiaison(); */
 $bdd = ConnectionBDD::getLiaison();
 
 ?>

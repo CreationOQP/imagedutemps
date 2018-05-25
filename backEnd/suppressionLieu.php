@@ -2,6 +2,7 @@
 session_start();
 $_SESSION['langue'] = 'fr';
 include "../include/langageInclude.php";
+include "../include/droitUtilisation.php";
 include "../class/connectionBDD.php";
 $bdd = ConnectionBDD::getLiaison();
 ?>
