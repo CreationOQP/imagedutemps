@@ -10,7 +10,7 @@
 <head>
 	<title>L'image du temps</title>
 	<link rel="stylesheet" type="text/css" href="style/reset.css" />
-	<link rel="stylesheet" type="text/css" href="style/style.css" />
+	<link rel="stylesheet" type="text/css" href="style/styleDiapo.css" />
 	<meta name="Description" content="Les image du temps passé confrontées au temps présent." />
 	<meta name="Keywords" content="image, hier, aujourd'hui, diaporama" />
 	<script type="text/javascript" src="script/scriptJS.js"></script>
@@ -52,7 +52,7 @@
 		
 		<footer>
 			<img src="image/legende.png" alt="titre" id="légende" />
-			<h2><?php echo $_SESSION['message']; ?>
+			<h2></h2>
 		</footer>
 	</section>
 	
