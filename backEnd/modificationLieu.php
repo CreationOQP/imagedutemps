@@ -5,6 +5,8 @@ include "../include/langageInclude.php";
 include "../include/droitUtilisation.php";
 include "../class/connectionBDD.php";
 $bdd = ConnectionBDD::getLiaison();
+$page = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
+$_SESSION['disturb']= $page;
 ?>
 
 
@@ -87,6 +89,7 @@ $bdd = ConnectionBDD::getLiaison();
 						<p><label for="commentaire_lieu" id="label_commentaire_lieu" class="label">Commentaire</label></p>
 						<p><textarea name="commentaire_lieu" id="champ_commentaire_lieu" class="champ" rows="4" cols="30"></textarea></p>
 						
+						<input type="hidden" name="compteur" id="compteur" value="<?php echo $page; ?>" />
 						<p><input type="submit" name="bouton_lieu" value="Modifier" id="boutonlieu" class="bouton" />
 							
 				</fieldset>

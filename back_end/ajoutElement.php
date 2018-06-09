@@ -2,7 +2,6 @@
 session_start();
 $_SESSION['langue'] = 'fr';
 include "../include/langageInclude.php";
-include "../include/droitUtilisation.php";
 include "../class/connectionBDD.php";
 $bdd = ConnectionBDD::getLiaison();
 $page = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));

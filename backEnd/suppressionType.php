@@ -3,8 +3,11 @@ session_start();
 $_SESSION['langue'] = 'fr';
 include "../include/langageInclude.php";
 include "../include/droitUtilisation.php";
-include "../class/connectionBDD.php";
+include "../class/connectionBDDLocal.php";
+/* include "../class/connectionBDD.php"; */
 $bdd = ConnectionBDD::getLiaison();
+$page = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
+$_SESSION['disturb']= $page;
 ?>
 
 
@@ -65,14 +68,15 @@ $bdd = ConnectionBDD::getLiaison();
 					<p>Pour supprimer un type, le type sélectionné ne doit avoir aucun enregistrements commun dans la liste ci-dessus. En claire le type sélectionné ne doit pas se trouver dans la liste.</p>
 					
 					
-					<p><label for="nom_type" id="label_nom_type" class="label">Type à supprimer</label>
-					<select name="nom_type" id="liste_type" class="champ">
+					<p><label for="typ_nom" id="label_nom_type" class="label">Type à supprimer</label>
+					<select name="typ_nom" id="typ_nom" class="champ">
 						<?php
 							$requeteSuppression = $bdd->prepare('SELECT typdia_nom FROM Type_diapo WHERE typdia_id NOT IN (SELECT dia_typdia_id FROM Diapositive)');
 							$requeteSuppression->execute();
 							WHILE ($donneeSuppression = $requeteSuppression->fetch()) {
 								echo '<option>'.$donneeSuppression['typdia_nom'].'</option>'; } ?>
 					</select></p>
+					<input type="hidden" name="compteur" id="compteur" value="<?php echo $page; ?>" />
 					<p><input type="submit" name="bouton_type" value="Supprimer" id="bouton_type" class="bouton" /></p>
 					
 					

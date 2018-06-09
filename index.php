@@ -23,16 +23,16 @@
 	</form>
 	<div id="modalAccueilFr"> <!-- Cadre de la fenêtre modal -->
 		<div id="modalAccueilMenu"> <!-- Cadre de la fenêtre modal pour le menu pour faire une animation sur le menu -->
-			<h1><a href="index.html">Image du temps - Bienvenue</a></h1>
+			<h1><a href="#fermer">Image du temps - Bienvenue</a></h1>
 			<ul>
-				<li><a href="">Liste déroulante ville</a></li>
+				<li><a href="connexion.php">Accueil backEnd</a></li>
 				<li><a href="contact.html" title="Pour correspondre avec l'administrateur">Contacts</a></li>
 				<li><a href="aPropos.html"><img src="image/logo.png" alt="France" id="logo" title="A propos"class="menu" /></a></li>
 			</ul>
 			<ul><li id="modalFermer"><a href="#fermer"  title="Retour accueil" >Fermer fenêtre</a></li></ul>
 		</div>
 	</div>
-	<nav >
+	<nav>
 		<ul>
 			<li><a href="#modalAccueilFr"><img src="image/flagFR.png" alt="France" id="fr" class="menu" /></a></li>
 			<li><img src="image/flagUK.png" alt="France" id="uk" class="menu" /></li>

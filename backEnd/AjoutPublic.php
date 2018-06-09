@@ -4,9 +4,9 @@ $_SESSION['langue'] = 'fr';
 include "../include/langageInclude.php";
 include "../include/droitUtilisation.php";
 include "../class/connectionBDD.php";
-
 $bdd = ConnectionBDD::getLiaison();
-
+$page = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
+$_SESSION['disturb']= $page;
 ?>
 
 
@@ -64,7 +64,7 @@ $bdd = ConnectionBDD::getLiaison();
 					<p><label for="nouveau_sta_nom" id="label_sta_nom" class="etiquette" class="nouvelle_etiquette">Nouveau statut juridique</label>
 					<input type="text" name="nouveau_sta_nom" id="nouveau_sta_nom" class="champ" class="nouveau_champ" />
 					<p><label id="commentaire_label" class="label">Commentaire</label><br />
-					<textarea name="commentaire_statut" id="commentaire_statut" class="champ" rows="3" cols="20"></textarea></p>
+					<textarea name="sta_commentaire" id="sta_commentaire" class="champ" rows="3" cols="20"></textarea></p>
 				</fieldset>
 				
 	<!-- Dénomination -->
@@ -227,6 +227,7 @@ $bdd = ConnectionBDD::getLiaison();
 				<p><label for="nouveau_type_telephone" id="label_nouveau_type_telephone" class="label" class="nouvelle_etiquette">Nouveau type de téleéphone</label>
 				<input type="text" name="nouveau_type_telephone" id="nouveau_type_telephone" class="champ" class="nouveau_champ"/></p>
 				
+				<input type="hidden" name="compteur" id="compteur" value="<?php echo $page; ?>" />
 				<p><input type="submit" name="bouton_public" id="bouton_public" value="Enregistrer" class="bouton" />
 				<input type="reset" id="reset_public" class="bouton" /></p>
 				

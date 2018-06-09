@@ -1,4 +1,22 @@
 <?php
+// Page connexion
+	define('_INSCRIT', 'Inscrit');
+	define('_VOTREPSEUDO', 'Votre pseudo');
+	define('_SECONNECTER', 'Se connecter');
+	define('_FERMERLA', 'Fermer la fenêtre');
+	define('_NONINSCRIT', 'Non inscrit');
+	define('_ACHOISIR', 'À choisir');
+	define('_VOTREPRENOM', 'Inscrivez votre prénom');
+	define('_VOTRENOM', 'Inscrivez votre nom');
+	define('_VOTREEMAIL', 'Votre adresse Email');
+	define('_EXPLICATIONPASSWORD', 'Votre mot de passe doit comporter 6 caractères avec majuscule(s), minuscule(s) et chiffre(s).');
+	define('_MOTDEPASSE', 'Mot de passe de 6 caractères');
+	define('_REPETEZPASSWORD', 'Répétez le mot de passe');
+	define('_MOTDEPASSE2', 'Mot de passe');
+	define('_REGLEMENT', 'Je reconnais avoir pris connaissance du réglement intérieur en cochant la case ci-dessous.');
+	define('_INSCRIPTION', 'S\'inscrire');
+	define('_', '');
+	
 // Page ajout
 	define('_AJOUTHEME', 'Ajout thème');
 	define('_NOUVEAUTHEME', 'nouveau thème');
@@ -50,8 +68,9 @@
 	define('_LIEU', "Lieu");
 	define('_TYPE', "Type");
 	define('_EFFACER', "Effacer");
-	define('_', "");
-
+	define('_PUBLIC', "Personne");
+	
+	
 // Page modification Epoque
 	define('_MODIFICATIONEPOQUE', "Modification époque");
 	

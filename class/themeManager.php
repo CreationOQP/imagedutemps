@@ -23,7 +23,7 @@ Class ThemeManager{
 		if ($requete->rowCount() != 0) {
 			$_SESSION['message'] = 'Le thème existe déjà';
 			$requete->closeCursor();
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		} else {
 			$requete->closeCursor();
@@ -35,7 +35,7 @@ Class ThemeManager{
 							'commentaire' => $theCommentaire));
 			$requeteAjout->closeCursor();
 			$_SESSION['message'] = 'Le thème '.$theNom.' est bien enregistré';
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		}
 	}
@@ -64,7 +64,7 @@ Class ThemeManager{
 										'id' => $theId));
 		$requeteModification->closeCursor();
 		$_SESSION['message'] = "Le thème ".$theNom." a été modifié.";
-		header('Location:../backEnd/modificationTheme.php');
+		header('Location:../back_end/modificationTheme.php');
 		exit();
 		
 	}
@@ -74,7 +74,7 @@ Class ThemeManager{
 		$requeteSuppression->execute(array($theNom));
 		$requeteSuppression->closeCursor();
 		$_SESSION['message'] = "le thème ".$theNom." a été supprimé.";
-		header('Location:../backEnd/suppressionTheme.php');
+		header('Location:../back_end/suppressionTheme.php');
 		exit();
 	}
 	

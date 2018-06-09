@@ -30,7 +30,7 @@ Class DiapoManager {
 	public function verificationFormulaire($epoque, $theme, $lieu, $type) {
 		if ($epoque == 'À choisir' || $theme == 'À choisir' || $lieu == 'À choisir' || $type == 'À choisir') {
 			$_SESSION['message'] = 'Votre formulaire est partie en live... A refaire';
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		}
 		
@@ -38,22 +38,42 @@ Class DiapoManager {
 		$extensionValide = array('.png', '.jpg', '.jpeg');
 		if (!in_array($extensionUpload, $extensionValide)) {
 			$_SESSION['message'] = 'Votre extension est partie en live... A refaire';
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
-		} 
-		/* else {
-			$_SESSION['message'] = 'Test Ok, extension : '.$extensionUpload;
-			header('Location:../backEnd/ajoutElement.php');
-		} */
+		}
+		
+		$tailleAutorise = "10000000";
+		if($_FILES['uploadFichier']['size'] > $tailleAutorise) {
+			$_SESSION['message'] = 'Votre bibindum est trop gourmand... Régime obligatoire !!!';
+			header('Location:../back_end/ajoutElement.php');
+			exit();
+		}
+		$nom = $
+		if ($_FILES['uploadFichier']['tmp_name'] == 0 || $_FILES['uploadFichier']['size'] == 0 ){
+			$_SESSION['message'] = 'Votre photo est vide !!!';
+			header('Location:../back_end/ajoutElement.php');
+			exit();
+		}		
 	}
 	
 	public function EnregistrementBDD($bdd, $file, $publication, $date_diapo, $diapo_legende, $diapo_commentaire, $epoque,  $theme, $lieu, $type) {
-		// Récupération du nom de fichier
+		/* // Récupération du nom de fichier
 		$requete = $bdd->prepare('SELECT dia_id FROM Diapositive ORDER BY dia_id DESC LIMIT 1');
 		$requete->execute();
 		$donnee = $requete->fetch();
 		$idDiapo = $donnee['dia_id'] + 1;
-		$requete->closeCursor();
+		$requete->closeCursor(); */
+		// nomage aléatoire du fichier
+		$compteur = 0;
+		$nomAleatoire = '';
+		WHILE ($compteur = 1) {
+			$nomAleatoire = bin2hex(mcrypt_create_iv(10, MCRYPT_DEV_URANDOM));
+			$requete = $bdd->prepare('SELECT DIA_nom FROM Diapositive WHERE dia_nom = ?');
+			$requete->execute(array($nomAleatoire));
+			$compteur = $requete->rowCount();
+			$requete->closeCursor();
+		}
+				
 		// Récupération de l'extension
 		$extensionUpload = strrchr($_FILES['uploadFichier']['name'], '.');
 		// Dossier de stockage
@@ -70,11 +90,11 @@ Class DiapoManager {
 		// public pour le test
 		$public = 1;
 		
-		if (move_uploaded_file($_FILES['uploadFichier']['tmp_name'], $dossier.$idDiapo.$extensionUpload)) {
-			$requeteEnregistrement = $bdd->prepare('INSERT INTO Diapositive(dia_id, dia_publication, dia_date, dia_legend, dia_format, dia_commentaire, dia_enregistrement, dia_epo_annee, dia_the_id, dia_lie_id, dia_typdia_id, dia_pub_id)
-								VALUES (:id, :publication, :dateDia, :legend, :format, :commentaire, :enregistrement, :epoque, :theme, :lieu, :type, :donateur)');
+		if (move_uploaded_file($_FILES['uploadFichier']['tmp_name'], $dossier.$nomAleatoire.$extensionUpload)) {
+			$requeteEnregistrement = $bdd->prepare('INSERT INTO Diapositive(dia_nom, dia_publication, dia_date, dia_legend, dia_format, dia_commentaire, dia_enregistrement, dia_epo_annee, dia_the_id, dia_lie_id, dia_typdia_id, dia_pub_id)
+								VALUES (:nom, :publication, :dateDia, :legend, :format, :commentaire, :enregistrement, :epoque, :theme, :lieu, :type, :donateur)');
 			$requeteEnregistrement->execute(array(
-										'id' => $idDiapo,
+										'nom' => $nomAleatoire,
 										'publication' => $publication,
 										'dateDia' => $date_diapo,
 										'legend' => $diapo_legende,
@@ -90,7 +110,7 @@ Class DiapoManager {
 			
 		} else {
 			$_SESSION['message'] = 'Le téléchargement est un échec';
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		}
 	}
@@ -119,17 +139,17 @@ Class DiapoManager {
 			$imageOriginale = imagecreatefromjpeg($file);
 			$imageMiniature = imagecreatetruecolor($newLargeur, $newHauteur);
 			imagecopyresampled($imageminiature, $imageOriginale, 0,0,0,0, $newLargeur, $newHauteur, $size[0], $size[1]);
-			imagejpeg($imageMiniature, '../diapoMiniature/'.$idDiapo.'.jpg');
+			imagejpeg($imageMiniature, '../diapoMiniature/'.$idDiapo.'.jpg',100);
 			$_SESSION['message'] = "L'image et sa miniature sont installées";
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		}else {
 			$imageOriginale = imagecreatefrompng($file);
 			$imageMiniature = imagecreatetruecolor($newLargeur, $newHauteur);
 			imagecopyresampled($imageminiature, $imageOriginale, 0,0,0,0, $newLargeur, $newHauteur, $size[0], $size[1]);
-			imagepng($imageMiniature, '../diapoMiniature/'.$idDiapo.'.png');
+			imagepng($imageMiniature, '../diapoMiniature/'.$idDiapo.'.png',100);
 			$_SESSION['message'] = "L'image et sa miniature sont installées";
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		}
 	}

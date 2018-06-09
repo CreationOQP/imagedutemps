@@ -144,7 +144,7 @@ Class PublicManager {
 			|| !empty($nouvelle_vil_nom) && $vil_nom != 'À choisir'
 		) {
 			$_SESSION['message'] = "Le caractère de la personne est légèrement tronqué, même si cela correspond dans la vie il n'est pas utile de le préciser sur le site";
-			header('Location:../backEnd/ajoutPublic.php');
+			header('Location:../back_end/ajoutPublic.php');
 			exit();
 			}
 	}

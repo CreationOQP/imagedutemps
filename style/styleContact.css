@@ -1,93 +1,59 @@
-html {
-	width : 100%;
-	height : 100%;
-}
-
-body {
-	background-color : #b09e56;
-	color : #363638;
-}
-header img {
-	display : block;
-	margin : 10px auto;
-	width : 100%;
-	max-width : 500px;
-	height : auto;
-	margin-left: 30%;
-}
-header nav ul {
-	margin : 15px 0 0 5%;
-}
-header nav ul li {
-	display : inline;		/* Affiche la liste horizontalement */
-	width : 100px;
-	border : 0px solid green;
-	margin-left : 10px;
-	height : 50px;
-}
-header nav ul li a {
-	color : silver;
-	border : 0px solid green;
-	font-size : 110%;
-}
-header nav ul li a:hover {
-	color : white;
-	font-size : 120%;
-}
-
-section h1 {
-	font-size : 200%;
-	text-align : center;
-	font-style : bold;
-	margin : 15px 0 0 0;
-}
-section h1 a {
-	color : #363638;
-}
-section p {
-	margin : 15px 15px 0 20px;
-}
-section article p::first-letter {		/*pseudo-élément désignant la 1ère lettre de chaque paragraphe de la section article */
-	float : left;					/* Aligne à gauche et le reste du texte passe autour */
+	html {
+		width : 100%;
+		height : 100%;
+	}
 	
-	font-size : 150%;
-	line-height : 0.5em;
-	style-font : bold;
-}
-section form fieldset {
-	margin : 10px 0 0 10%;
-	border : 1px solid blue;
-	border-radius : 10px 0 10px 10px;
-	width : 100%;
-	max-width : 500px;
-	height : auto;
-}
-section form fieldset legend {
-	margin-left : 5%;
-	padding : 0 15px;
-}
-section form fieldset p label {
-	display : inline-block;
-	margin : 5px 0 0 10px;
-	width : 100px;
-}
-section form fieldset p input {
-	width : 60%;
-}
-section form fieldset p input:focus, textarea:focus {
-	background-color : #b3ffb3;
-}
-section form fieldset #mouton input {
-	width : 75px;
-	color : #b09e56;
-	background : #363638;
-}
-section form fieldset p .asterix {
-	color : red;
-}
-footer {
-	opacity : 0.7;
-	text-align : right;
-	margin : 10px 15% 0 0;
-	font-size : 80%;
-}
+	body {
+		background : linear-gradient(#a3c2c2 ,#b09e56);
+		color : #363638;
+	}
+	
+	section header {
+		width : 100%;
+		max-width : 500px;
+		margin : auto;
+	}
+	section header h1 {
+		text-align : center;
+		margin-top : 15px;
+		font-size : 200%;
+	}
+	
+	section header p {
+		font-style : italic;
+		text-align : right;
+	}
+	
+	section table {
+		margin : auto;
+		margin-top : 20px;
+	}
+	
+	section table tr td {
+		vertical-align : middle;
+		border : 0px solid red;
+	}
+	
+	section table tr td form fieldset  {
+		margin : 10px 10px 10px 10%;
+		border : 1px solid blue;
+		border-radius : 10px 0 10px 10px;
+		width : 60%;
+	}
+
+	section table tr td form fieldset legend {
+		margin-left : 5%;
+		padding : 5px 15px 5px 15px;
+		border-top : 1px solid blue;
+		border-bottom : 1px solid blue;
+	}
+	
+	section table tr td form fieldset p {
+		margin : 15px 15px 10px 20px;
+	}
+	
+	section footer h2 {
+		text-align : center;
+		margin-top : 15px;
+		font-size : 200%;
+	}

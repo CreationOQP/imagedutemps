@@ -23,7 +23,7 @@ Class TypeManager{
 		if ($requete->rowCount() != 0) {
 			$_SESSION['message'] = 'Le type de diapo existe déjà';
 			$requete->closeCursor();
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		} else {
 			$requete->closeCursor();
@@ -35,7 +35,7 @@ Class TypeManager{
 							'commentaire'=> $typDiaCommentaire));
 			$requeteAjout->closeCursor();
 			$_SESSION['message'] = 'Le type '.$typDiaNom.' est bien enregistré.';
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		}
 	}
@@ -64,7 +64,7 @@ Class TypeManager{
 										'id' => $typDiaId));
 		$requeteModification->closeCursor();
 		$_SESSION['message'] = "Le type de diapo ".$typDiaNom." a été modifié.";
-		header('Location:../backEnd/modificationType.php');
+		header('Location:../back_end/modificationType.php');
 		exit();
 	}
 	
@@ -73,7 +73,7 @@ Class TypeManager{
 		$requeteSuppression->execute(array($typDiaNom));
 		$requeteSuppression->closeCursor();
 		$_SESSION['message'] = "Le type ".$typDiaNom." a été supprimé.";
-		header('Location:../backEnd/suppressionType.php');
+		header('Location:../back_end/suppressionType.php');
 		exit();
 	}
 	

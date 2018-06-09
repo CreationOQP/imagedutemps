@@ -21,7 +21,7 @@ Class EpoqueManager{
 		if ($requete->rowCount() != 0) {
 			$_SESSION['message'] = "L'époque existe déjà !";
 			$requete->closeCursor();
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		} else {
 			$requete->closeCursor();
@@ -33,7 +33,7 @@ Class EpoqueManager{
 									'commentaire' => $epoCommentaire));
 			$requeteAjout->closeCursor();
 			$_SESSION['message'] = "L'époque ".$epoAnnee." est enregistrée.";
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		}
 	}
@@ -58,7 +58,7 @@ Class EpoqueManager{
 											'annee' => $epoAnnee));
 		$requeteModification->closeCursor();
 		$_SESSION['message'] = "L'époque ".$epoAnnee." a été modifié";
-		header('Location:../backEnd/modificationEpoque.php');
+		header('Location:../back_end/modificationEpoque.php');
 		exit();
 	}
 	
@@ -67,7 +67,7 @@ Class EpoqueManager{
 		$requeteSuppression->execute(array($epoAnnee));
 		$requeteSuppression->closeCursor();
 		$_SESSION['message'] = "L'époque ".$epoAnnee." est supprimée.";
-		header('Location:../backEnd/suppressionEpoque.php');
+		header('Location:../back_end/suppressionEpoque.php');
 		exit();
 	}
 	

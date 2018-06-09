@@ -4,6 +4,15 @@ $_SESSION['langue'] = 'fr';
 $_SESSION['autorisation'] = 'administrateur';
 include "../include/langageInclude.php";
 include "../include/droitUtilisation.php";
+
+/* include "../class/connexionManager.php";
+$transhumance = new ConnexionManager($bdd, $pubEtcId, $pubPrenom, $pubNom, $pubDenId, $pubPseudo, $utmNom, $dnsNom, $pwdMot, $_COOKIE['vol'], $_SESSION['migration'], $idPub);
+$transhumance->migration($_COOKIE['vol'], $_SESSION['migration']); */
+
+if (!isset($_SESSION['message'])) {
+	$_SESSION['message'] = 'Les jolies colonies de vacances...';
+}
+$_SESSION['utilisateur'] = 'Noël';
 ?>
 
 
@@ -21,12 +30,8 @@ include "../include/droitUtilisation.php";
 	</header>
 
 	<section>
-		<?php
-			$_SESSION['utilisateur'] = 'Noël';
-			$_SESSION['message'] = 'Bonjour '.$_SESSION['utilisateur'].', il fait beau !';
-		?>
-		<p><a href="ajoutElement.php" >Ajout élément</a></p>
 		<p><a href="ajoutPublic.php">Ajout de personne</a></p>
+		<p><a href="ajoutElement.php" >Ajout élément</a></p>
 		<p><a href="modificationEpoque.php">Modification époque</a></p>
 		<p><a href="modificationLieu.php">Modification lieu</a></p>
 		<p><a href="modificationTheme.php">Modification theme</a></p>
@@ -36,5 +41,9 @@ include "../include/droitUtilisation.php";
 		<p><a href="suppressionTheme.php">Suppression Thème</a></p>
 		<p><a href="suppressionType.php">Suppression Type</a></p>
 	</section>
+	<footer>
+		<h2>Bonjour <?php echo $_SESSION['utilisateur']; ?>, il fait beau.</h2>
+		<h3><?php echo $_SESSION['message'];?></h3>
+	</footer>
 </body>
 </html>

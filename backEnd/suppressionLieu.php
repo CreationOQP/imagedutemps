@@ -3,8 +3,11 @@ session_start();
 $_SESSION['langue'] = 'fr';
 include "../include/langageInclude.php";
 include "../include/droitUtilisation.php";
-include "../class/connectionBDD.php";
+include "../class/connectionBDDLocal.php";
+/* include "../class/connectionBDD.php"; */
 $bdd = ConnectionBDD::getLiaison();
+$page = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
+$_SESSION['disturb']= $page;
 ?>
 
 
@@ -62,14 +65,16 @@ $bdd = ConnectionBDD::getLiaison();
 				<fieldset>
 					<legend>Sélectionnez le lieu à supprimer dans la liste ci-dessous</legend>
 					<p>Pour supprimer un lieu, le lieu sélectionnez ne doit avoir aucun enregistrements commun dans la liste ci-dessus. En clair le lieu ne doit pas apparaitre dans la liste.</p>
-					<p><label for="nom_lieu" id="label_nom_lieu" class="label">Lieu à supprimer</label>
-					<select name="nom_lieu" id="liste_lieu" class="champ">
+					<p><label for="lie_nom" id="label_nom_lieu" class="label">Lieu à supprimer</label>
+					<select name="lie_nom" id="lie_nom" class="champ">
 						<?php
 							$requeteSuppression = $bdd->prepare('SELECT lie_nom FROM Lieu WHERE lie_id NOT IN (SELECT dia_lie_id FROM Diapositive)');
 							$requeteSuppression->execute();
 							WHILE ($donneeSuppression = $requeteSuppression->fetch()) {
 								echo '<option>'.$donneeSuppression['lie_nom'].'</option>'; } ?>
 					</select></p>
+					
+					<input type="hidden" name="compteur" id="compteur" value="<?php echo $page; ?>" />
 					<p><input type="submit" name="bouton_lieu" value="Supprimer" id="bouton_lieu"class="bouton" /></p>
 				</fieldset>
 			</form>

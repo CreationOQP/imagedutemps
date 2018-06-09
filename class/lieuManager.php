@@ -22,7 +22,7 @@ Class LieuManager{
 		if ($requete->rowCount() != 0) {
 			$_SESSION['message'] = 'Le lieu existe déjà';
 			$requete->closeCursor();
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		} else {
 			$requete->closeCursor();
@@ -34,7 +34,7 @@ Class LieuManager{
 							'commentaire'=> $lieCommentaire));
 			$requeteAjout->closeCursor();
 			$_SESSION['message'] = 'Le lieu '.$lieNom.' est bien enregistré.';
-			header('Location:../backEnd/ajoutElement.php');
+			header('Location:../back_end/ajoutElement.php');
 			exit();
 		}
 	}
@@ -63,7 +63,7 @@ Class LieuManager{
 										'id' => $lieId));
 		$requeteModification->closeCursor();
 		$_SESSION['message'] = "le lieu ".$lieNom." a été modifié.";
-		header('Location:../backEnd/modificationLieu.php');
+		header('Location:../back_end/modificationLieu.php');
 		exit();
 		
 	}	
@@ -76,14 +76,14 @@ Class LieuManager{
 		
 		if ($donne['lie_id'] == 1) {
 			$_SESSION['message'] = "ce lieu ne peut-être supprimé.";
-			header('Location:../backEnd/suppressionLieu.php');
+			header('Location:../back_end/suppressionLieu.php');
 			exit();
 		} else {
 			$requeteSuppression = $bdd->prepare('DELETE FROM Lieu WHERE lie_nom = ?');
 			$requeteSuppression->execute(array($lieNom));
 			$requeteSuppression->closeCursor();
 			$_SESSION['message'] = "Le lieu ".$lieNom." a été supprimé.";
-			header('Location:../backEnd/suppressionLieu.php');
+			header('Location:../back_end/suppressionLieu.php');
 			exit();
 		}
 	}
